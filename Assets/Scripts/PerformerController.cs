@@ -9,7 +9,7 @@ public class PerformerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        animator.SetFloat("animSpeed", 0.5f);
+        animator.SetFloat("animSpeed", 0f);
     }
     void Update()
     {
@@ -17,10 +17,5 @@ public class PerformerController : MonoBehaviour
         float move_amount = Mathf.Clamp01(Mathf.Abs(movement.x) + Mathf.Abs(movement.z));
         animator.SetFloat("animSpeed", move_amount, 100f, 1f);
 
-        /*if (move_amount > 0)
-        {
-            Quaternion target_rotation = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, target_rotation, 100f * Time.deltaTime);
-        }*/
     }
 }
