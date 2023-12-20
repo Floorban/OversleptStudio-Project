@@ -20,6 +20,5 @@ public class PerformerController : MonoBehaviour
 
         float tiltInput = Input.acceleration.y * tiltSpeed;
         animator.SetFloat("animSpeed", Mathf.Clamp01(tiltInput), 100f, Time.deltaTime);
-
     }
 }

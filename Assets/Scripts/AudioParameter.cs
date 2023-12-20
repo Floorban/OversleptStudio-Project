@@ -23,12 +23,12 @@ public class AudioParameter : MonoBehaviour
 
     void OnGUI()
     {
-        sliderValue = GUI.HorizontalSlider(new Rect(25, 25, 300, 100), sliderValue, 0.0F, 1.25F);
-        sliderValue2 = GUI.HorizontalSlider(new Rect(25, 100, 300, 100), sliderValue2, 0.1F, 1.5F);
-        sliderValue3 = GUI.HorizontalSlider(new Rect(25, 175, 300, 100), sliderValue3, 0.1F, 10.0F);
-        audioSource.pitch = sliderValue;
-        audioSource.volume = sliderValue2;
-        audioEditor.decayTime = sliderValue3;
+        sliderValue = GUI.HorizontalSlider(new Rect(630, 350, 300, 300), sliderValue, 0.0F, 10F);
+        //sliderValue2 = GUI.HorizontalSlider(new Rect(25, 100, 300, 100), sliderValue2, 0.1F, 1.5F);
+       // sliderValue3 = GUI.HorizontalSlider(new Rect(25, 175, 300, 100), sliderValue3, 0.1F, 10.0F);
+        //audioSource.pitch = sliderValue;
+      //  audioSource.volume = sliderValue2;
+        audioEditor.decayTime = sliderValue;
 
     }
 }

@@ -11,6 +11,8 @@ public class AnimSpeed : MonoBehaviour
     private float audioSpeed, audioVolume;
     [SerializeField]
     private float factor, factor2;
+
+    public GameObject clickEffect;
     private void Start()
     {
         mainAnimator = GetComponent<Animator>();
@@ -24,5 +26,26 @@ public class AnimSpeed : MonoBehaviour
         audioVolume = audioSource.volume;
         animVolumeControl = audioVolume * factor2;
         mainAnimator.SetFloat("animStyle", animVolumeControl, 100f, 1f);
+
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        if (scrollInput > 0f)
+        {
+            audioSource.pitch += 0.03f;
+        }else if (scrollInput < 0f)
+        {
+            audioSource.pitch -= 0.03f;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(clickEffect, transform.position, Quaternion.identity);
+            audioSource.volume += 0.2f;
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Instantiate(clickEffect, transform.position, Quaternion.identity);
+            audioSource.volume -= 0.2f;
+        }
+
     }
 }
