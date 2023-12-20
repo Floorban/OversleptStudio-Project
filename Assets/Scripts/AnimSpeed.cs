@@ -1,26 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimSpeed : MonoBehaviour
 {
     [SerializeField] Animator mainAnimator;
-    [SerializeField, Range(5f, 10f)] float animSpeedControl = 0.5f;
+    [SerializeField, Range(0f, 1.5f)] float animSpeedControl = 0.5f;
+    [SerializeField, Range(0f, 1.5f)] float animVolumeControl = 0.5f;
 
     public AudioSource audioSource;
     [SerializeField]
-    private float audioVolume;
+    private float audioSpeed, audioVolume;
     [SerializeField]
-    private float factor;
+    private float factor, factor2;
     private void Start()
     {
         mainAnimator = GetComponent<Animator>();
     }
     void Update()
     {
-        audioVolume = audioSource.pitch;
-        animSpeedControl = audioVolume * factor;
+        audioSpeed = audioSource.pitch;
+        animSpeedControl = audioSpeed * factor;
+        mainAnimator.SetFloat("animSpeed", animSpeedControl, 100f, 1f);
 
-        mainAnimator.SetFloat("animSpeed", animSpeedControl, 10f, 1f);
+        audioVolume = audioSource.volume;
+        animVolumeControl = audioVolume * factor2;
+        mainAnimator.SetFloat("animStyle", animVolumeControl, 100f, 1f);
     }
 }
