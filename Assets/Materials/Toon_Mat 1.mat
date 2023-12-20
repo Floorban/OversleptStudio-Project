@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon_Mat
+  m_Name: Toon_Mat 1
   m_Shader: {fileID: -6465566751694194690, guid: 1cd367492bb785d44a296414f628da7c,
     type: 3}
   m_ValidKeywords: []
@@ -56,7 +56,7 @@ Material:
     - _QueueOffset: 0
     - _Smoothness: 80
     m_Colors:
-    - _Diffuse_Color: {r: 0.37647063, g: 0.8509804, b: 0.52021176, a: 0}
+    - _Diffuse_Color: {r: 0.8490566, g: 0.72053, b: 0.37646848, a: 0}
     - _Fresnel_Color: {r: 0.335849, g: 0.1058241, b: 0.1058241, a: 0}
     - _Specular_Color: {r: 0.381132, g: 0.1315984, b: 0.1315984, a: 0}
   m_BuildTextureStacks: []

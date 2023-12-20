@@ -39,12 +39,12 @@ public class AnimSpeed : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Instantiate(clickEffect, transform.position, Quaternion.identity);
-            audioSource.volume += 0.2f;
+            audioSource.volume += 0.1f;
         }
         if (Input.GetMouseButtonDown(1))
         {
             Instantiate(clickEffect, transform.position, Quaternion.identity);
-            audioSource.volume -= 0.2f;
+            audioSource.volume -= 0.1f;
         }
 
     }
