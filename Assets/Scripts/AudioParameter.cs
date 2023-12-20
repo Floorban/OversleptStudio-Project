@@ -12,9 +12,9 @@ public class AudioParameter : MonoBehaviour
 
     void Start()
     {
-        sliderValue = 0.1f;
+        sliderValue = 0.5f;
         //sliderValue2 = 0.1f;
-        sliderValue2 = 1f;
+        sliderValue2 = 0.2f;
         sliderValue3 = 0.1f;
         audioSource = GetComponent<AudioSource>();
         audioEditor = GetComponent<AudioReverbFilter>();
@@ -23,9 +23,9 @@ public class AudioParameter : MonoBehaviour
 
     void OnGUI()
     {
-        sliderValue = GUI.HorizontalSlider(new Rect(25, 25, 300, 100), sliderValue, 0.0F, 1.5F);
-        sliderValue2 = GUI.HorizontalSlider(new Rect(25, 100, 300, 100), sliderValue2, 0.1F, 2.0F);
-        sliderValue3 = GUI.HorizontalSlider(new Rect(25, 175, 300, 100), sliderValue3, 0.1F, 20.0F);
+        sliderValue = GUI.HorizontalSlider(new Rect(25, 25, 300, 100), sliderValue, 0.0F, 1.25F);
+        sliderValue2 = GUI.HorizontalSlider(new Rect(25, 100, 300, 100), sliderValue2, 0.1F, 1.5F);
+        sliderValue3 = GUI.HorizontalSlider(new Rect(25, 175, 300, 100), sliderValue3, 0.1F, 10.0F);
         audioSource.pitch = sliderValue;
         audioSource.volume = sliderValue2;
         audioEditor.decayTime = sliderValue3;

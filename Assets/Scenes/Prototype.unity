@@ -1146,9 +1146,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainAnimator: {fileID: 1322005531}
   animSpeedControl: 5
+  animVolumeControl: 5
   audioSource: {fileID: 1784431065}
+  audioSpeed: 0
   audioVolume: 0
   factor: 0.7
+  factor2: 1.7
 --- !u!1 &1350546332
 GameObject:
   m_ObjectHideFlags: 0
