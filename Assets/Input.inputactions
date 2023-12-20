@@ -1,0 +1,74 @@
+{
+    "name": "PlayerControl",
+    "maps": [
+        {
+            "name": "Map",
+            "id": "2573c5f3-332d-4871-b3ff-7a69cac8acec",
+            "actions": [
+                {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "6bba0d5b-6a69-4e80-9c0d-a4b449bc89bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hold",
+                    "type": "Button",
+                    "id": "d94708ef-4b65-4c49-b141-d6011d08b74f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Drag",
+                    "type": "Button",
+                    "id": "620e2912-23b8-42cf-8993-b555dbb4dde6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "be0b38c8-ef3b-426f-9296-0c575e9c44a4",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca53a003-ab7d-451b-aad1-ce8b5c02830e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "249a4da7-a389-4d2b-9ceb-5e60dc85bc81",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
