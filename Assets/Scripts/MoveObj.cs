@@ -7,9 +7,11 @@ public class MoveObj : MonoBehaviour
     private Touch touch;
     [SerializeField]
     private float speed;
+    private mSpawner spawner;
     void Start()
     {
         speed = -0.008f;
+        spawner = FindObjectOfType<mSpawner>();
     }
 
     private void OnMouseDrag()
@@ -25,5 +27,11 @@ public class MoveObj : MonoBehaviour
                                                                                   transform.position.z + touch.deltaPosition.y * speed);
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        spawner.currentNum--;
+        Destroy(gameObject);
     }
 }

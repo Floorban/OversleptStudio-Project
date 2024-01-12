@@ -6,8 +6,7 @@ public class mSpawner : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> mPrefabsList;
-    [SerializeField]
-    private int maxNum, currentNum;
+    public int maxNum, currentNum;
     private bool canSpawn;
     private void Update()
     {
