@@ -5,14 +5,14 @@ using UnityEngine;
 public class MoveObj : MonoBehaviour
 {
     private Touch touch;
+    [SerializeField]
     private float speed;
     void Start()
     {
-        speed = 0.005f;
+        speed = -0.008f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDrag()
     {
         if (Input.touchCount > 0)
         {
