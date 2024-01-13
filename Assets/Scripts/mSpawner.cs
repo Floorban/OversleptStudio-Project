@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class mSpawner : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class mSpawner : MonoBehaviour
     private List<GameObject> mPrefabsList;
     public int maxNum, currentNum;
     private bool canSpawn;
+    public TextMeshProUGUI cNumText;
     private void Update()
     {
         if (currentNum >=maxNum)
@@ -17,6 +19,8 @@ public class mSpawner : MonoBehaviour
         {
             canSpawn = true;
         }
+
+        cNumText.text = "On Stage: " + currentNum;
     }
     public void Spawn(int buttonID)
     {
