@@ -3399,11 +3399,11 @@ GameObject:
   - component: {fileID: 1784431069}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1784431065
 AudioSource:
   m_ObjectHideFlags: 0
