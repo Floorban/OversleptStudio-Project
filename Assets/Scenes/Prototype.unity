@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1418,6 +1418,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51133d7de17cb6346a92e442388acec5, type: 3}
+--- !u!1001 &792432399
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8605605244730159244, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605605244730159244, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605605244730159244, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.876
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605605244730159244, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.4891196
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605605244730159244, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.4891196
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605605244730159244, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.51064867
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605605244730159244, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.51064867
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605605244730159244, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605605244730159244, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605605244730159244, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -267.533
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945996918682642998, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_Name
+      value: rilakkuma robot all applied 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a9065f7cea7457e4bb6fba492540bf6b, type: 3}
 --- !u!1 &850199393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,7 +2839,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.9386792, g: 0.9417453, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2830,13 +2898,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258528939}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.8076856, y: -0.22165664, z: 0.31172273, w: 0.4487105}
+  m_LocalPosition: {x: 0, y: 7.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 59.658, y: -217.087, z: -171.082}
 --- !u!1 &1322005530 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ad622ddba1e09524fb28c185c3073d02,
@@ -4625,3 +4693,4 @@ SceneRoots:
   - {fileID: 1199803334}
   - {fileID: 1098736847}
   - {fileID: 1226130491}
+  - {fileID: 792432399}
