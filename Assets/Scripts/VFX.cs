@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VFX : MonoBehaviour
 {
-    [SerializeField] GameObject Vfx;
+    public GameObject Vfx;
     Vector2 tap;
     // Start is called before the first frame update
     void Start()
@@ -20,26 +20,26 @@ public class VFX : MonoBehaviour
 
     void Touch()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            tap = Camera.main.ScreenToWorldPoint(Input.tapPosition);
-            Vfx.SetActive(true);
-            Vfx.transform.position = new Vector3(tap.x, tap.y, 0f);
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            Vfx.SetActive(false);
-        }
-        //if (Input.touchcount > 0)
+        //if (Input.GetMouseButtonDown(0))
         //{
-        //    Touch touch = Input.GetTouch(0);
-        //    tap = Camera.main.ScreenToWorldPoint(touch.position);
+        //    tap = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //    Vfx.SetActive(true);
         //    Vfx.transform.position = new Vector3(tap.x, tap.y, 0f);
         //}
-        //else
+        //if (Input.GetMouseButtonUp(0))
         //{
         //    Vfx.SetActive(false);
         //}
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            tap = Camera.main.ScreenToWorldPoint(touch.position);
+            Vfx.SetActive(true);
+            Vfx.transform.position = new Vector2(tap.x, tap.y);
+        }
+        else
+        {
+            //Vfx.SetActive(false);
+        }
     }
 }
