@@ -70,9 +70,17 @@ public class GameManager : MonoBehaviour
     {
         if (countTimer == 15f)
         {
-            volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
+            /*volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
             pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
-            moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
+            moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;*/
+
+            int v = Random.Range(2, 8);
+            int p = Random.Range(8, 12);
+            int m = Random.Range(8, 12);
+
+            volumeLevel = (float) v / 10;
+            pitchLevel = (float)p / 10;
+            moveLevel = (float)m / 10;
 
             float targetVolume = volumeLevel;
             float adjustment = targetVolume - audio.volume;
@@ -101,6 +109,9 @@ public class GameManager : MonoBehaviour
         if (audio.volume == 0.5f)
         {
             volumeText.color = Color.green;
+        }else
+        {
+            Debug.Log(audio.volume);
         }
 
         if (audio.pitch == 1)
