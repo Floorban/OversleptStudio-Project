@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private float startTime;
     [SerializeField]
     private TextMeshProUGUI text;
+    private int hitTimes = 0;
 
     [SerializeField]
     private float volumeLevel, pitchLevel, moveLevel;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
             text.color = Color.green;
             collider1Hit = false;
             collider2Hit = false;
+            hitTimes++;
         }
 
         CheckValue();
@@ -77,6 +79,9 @@ public class GameManager : MonoBehaviour
             volumeText.color = Color.white;
             pitchText.color = Color.white;
             moveText.color = Color.white;
+
+            hitTimes = 0;
+            //transform.position = new Vector3(0, 0, 0);
         }
     }
     private void CheckValue()
@@ -91,7 +96,7 @@ public class GameManager : MonoBehaviour
             pitchText.color = Color.green;
         }
 
-        if (startTime == moveLevel)
+        if (Mathf.Abs(startTime - moveLevel) <= 0.5f && hitTimes >= 3)
         {
             moveText.color = Color.green;
         }
