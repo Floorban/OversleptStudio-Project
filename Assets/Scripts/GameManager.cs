@@ -12,9 +12,12 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI text;
 
     [SerializeField]
-    private int volumeLevel, pitchLevel, moveLevel;
+    private float volumeLevel, pitchLevel, moveLevel;
     [SerializeField]
     private TextMeshProUGUI volumeText, pitchText, moveText;
+
+    [SerializeField]
+    private AudioSource audio;
 
     [SerializeField]
     private Image countDownBar;
@@ -22,11 +25,12 @@ public class GameManager : MonoBehaviour
     private float countTimer;
     private void Start()
     {
-        countTimer = 10f;
+        audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
+        countTimer = 15f;
     }
     private void Update()
     {
-        text.text = startTime.ToString("0.00");
+        text.text = startTime.ToString("0.0");
 
         if (collider1Hit || collider2Hit)
         {
@@ -40,6 +44,7 @@ public class GameManager : MonoBehaviour
             collider2Hit = false;
         }
 
+        CheckValue();
         RandomTask();
         CountDownBar();
     }
@@ -59,27 +64,58 @@ public class GameManager : MonoBehaviour
 
     private void RandomTask()
     {
-        if (countTimer == 10f)
+        if (countTimer == 15f)
         {
-            volumeLevel = Random.Range(0, 10);
-            pitchLevel = Random.Range(0, 10);
-            moveLevel = Random.Range(0, 10);
+            volumeLevel = Mathf.Round(Random.Range(0.3f, 1.0f) * 10.0f) / 10.0f;
+            pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
+            moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
 
-            volumeText.text = $"Volume: + {volumeLevel.ToString()}";
-            pitchText.text = $"Pitch: + {pitchLevel.ToString()}";
-            moveText.text = $"Movement: + {moveLevel.ToString()}";
+            volumeText.text = $"Volume: {volumeLevel.ToString()}";
+            pitchText.text = $"Pitch: {pitchLevel.ToString()}";
+            moveText.text = $"Movement: {moveLevel.ToString()}";
+
+            volumeText.color = Color.white;
+            pitchText.color = Color.white;
+            moveText.color = Color.white;
+        }
+    }
+    private void CheckValue()
+    {
+        if (audio.volume == volumeLevel)
+        {
+            volumeText.color = Color.green;
+        }
+
+        if (audio.pitch == pitchLevel)
+        {
+            pitchText.color = Color.green;
+        }
+
+        if (startTime == moveLevel)
+        {
+            moveText.color = Color.green;
         }
     }
     private void CountDownBar()
     {
-        countDownBar.fillAmount = countTimer / 10f;
+        countDownBar.fillAmount = countTimer / 15f;
 
         countTimer -= Time.deltaTime;
 
         if (countTimer <= 0f)
         {
-            countTimer = 10f;
+            countTimer = 15f;
         }
+    }
+
+    public void PitchUp()
+    {
+        audio.pitch += 0.1f;
+    }
+
+    public void PitchDown()
+    {
+        audio.pitch -= 0.1f;
     }
 }
 
