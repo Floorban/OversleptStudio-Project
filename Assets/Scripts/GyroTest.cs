@@ -10,6 +10,7 @@ public class GyroTest : MonoBehaviour
 {
     //public TextMeshProUGUI text;
     Rigidbody rb;
+    public Vector3 angularVelocity;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -22,7 +23,7 @@ public class GyroTest : MonoBehaviour
 
     void Update()
     {
-        Vector3 angularVelocity = Gyroscope.current.angularVelocity.ReadValue();
+        angularVelocity = Gyroscope.current.angularVelocity.ReadValue();
         Vector3 acceleration = Accelerometer.current.acceleration.ReadValue();
         Vector3 attitude = AttitudeSensor.current.attitude.ReadValue().eulerAngles; // ReadValue() returns a Quaternion
         Vector3 gravity = GravitySensor.current.gravity.ReadValue();

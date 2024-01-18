@@ -26,6 +26,12 @@ public class GameManager : MonoBehaviour
     private float countTimer;
 
     public mSpawner spawner;
+
+    public GyroTest gyro;
+    [SerializeField]
+    private float volumeFactor;
+    [SerializeField]
+    private TextMeshProUGUI vText;
     private void Start()
     {
         audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
@@ -51,6 +57,9 @@ public class GameManager : MonoBehaviour
         CheckValue();
         RandomTask();
         CountDownBar();
+
+        vText.text = volumeFactor.ToString();
+        volumeFactor = gyro.angularVelocity.x;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -111,7 +120,7 @@ public class GameManager : MonoBehaviour
             volumeText.color = Color.green;
         }else
         {
-            Debug.Log(audio.volume);
+            //Debug.Log(audio.volume);
         }
 
         if (audio.pitch == 1)
