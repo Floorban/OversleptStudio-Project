@@ -10,6 +10,7 @@ public class mSpawner : MonoBehaviour
     public int maxNum, currentNum;
     private bool canSpawn;
     public TextMeshProUGUI cNumText;
+    public Transform spawnPos;
     private void Update()
     {
         if (currentNum >=maxNum)
@@ -22,20 +23,16 @@ public class mSpawner : MonoBehaviour
 
         cNumText.text = "On Stage: " + currentNum;
     }
-    public void Spawn(int buttonID)
+    public void Spawn()
     {
-        if (canSpawn == true)
+        if (mPrefabsList.Count > 0)
         {
-            if (buttonID >= 0 && buttonID < mPrefabsList.Count)
-            {
-                GameObject prefabToSpawn = mPrefabsList[buttonID];
-                GameObject spawnedMusician = Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
-                currentNum++;
-            }
-        }else
-        {
-            //something to show the player that they can't add more ppl on the stage
-        }
+            int randomIndex = Random.Range(0, mPrefabsList.Count);
 
+            GameObject prefabToSpawn = mPrefabsList[randomIndex];
+
+            GameObject spawnedMusician = Instantiate(prefabToSpawn, spawnPos.position, Quaternion.identity);
+            currentNum++;
+        }
     }
 }

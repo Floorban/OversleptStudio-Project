@@ -13,7 +13,7 @@ public class MoveObj : MonoBehaviour
     void Start()
     {
         audioSource = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
-        speed = -0.008f;
+        speed = 0.008f;
         spawner = FindObjectOfType<mSpawner>();
         audioSource.volume += 0.1f;
     }
