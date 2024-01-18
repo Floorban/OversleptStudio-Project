@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private Image countDownBar;
     [SerializeField]
     private float countTimer;
+
+    public mSpawner spawner;
     private void Start()
     {
         audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
@@ -68,13 +70,21 @@ public class GameManager : MonoBehaviour
     {
         if (countTimer == 15f)
         {
-            volumeLevel = Mathf.Round(Random.Range(0.3f, 1.0f) * 10.0f) / 10.0f;
+            volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
             pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
             moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
 
-            volumeText.text = $"Volume: {volumeLevel.ToString()}";
+            float targetVolume = volumeLevel;
+            float adjustment = targetVolume - audio.volume;
+            audio.volume += adjustment;
+
+            float targetPitch = pitchLevel;
+            float adjustmentp = targetPitch - audio.pitch;
+            audio.pitch += adjustmentp;
+
+            /*volumeText.text = $"Volume: {volumeLevel.ToString()}";
             pitchText.text = $"Pitch: {pitchLevel.ToString()}";
-            moveText.text = $"Movement: {moveLevel.ToString()}";
+            moveText.text = $"Movement: {moveLevel.ToString()}";*/
 
             volumeText.color = Color.white;
             pitchText.color = Color.white;
@@ -82,21 +92,23 @@ public class GameManager : MonoBehaviour
 
             hitTimes = 0;
             //transform.position = new Vector3(0, 0, 0);
+
+            spawner.Spawn();
         }
     }
     private void CheckValue()
     {
-        if (audio.volume == volumeLevel)
+        if (audio.volume == 0.5f)
         {
             volumeText.color = Color.green;
         }
 
-        if (audio.pitch == pitchLevel)
+        if (audio.pitch == 1)
         {
             pitchText.color = Color.green;
         }
 
-        if (Mathf.Abs(startTime - moveLevel) <= 0.5f && hitTimes >= 3)
+        if (Mathf.Abs(startTime - moveLevel) <= 0.5f && hitTimes >= 2)
         {
             moveText.color = Color.green;
         }

@@ -10,7 +10,15 @@ public class mSpawner : MonoBehaviour
     public int maxNum, currentNum;
     private bool canSpawn;
     public TextMeshProUGUI cNumText;
-    public Transform spawnPos;
+
+    [SerializeField]
+    private float minX, maxX, minZ, maxZ;
+    private void Start()
+    {
+        Spawn();
+        Spawn();
+        Spawn();
+    }
     private void Update()
     {
         if (currentNum >=maxNum)
@@ -31,8 +39,14 @@ public class mSpawner : MonoBehaviour
 
             GameObject prefabToSpawn = mPrefabsList[randomIndex];
 
-            GameObject spawnedMusician = Instantiate(prefabToSpawn, spawnPos.position, Quaternion.identity);
+            float randomX = Random.Range(minX, maxX);
+            float randomZ = Random.Range(minZ, maxZ);
+
+            Vector3 randomSpawnPosition = new Vector3(randomX, -3, randomZ);
+
+            GameObject spawnedMusician = Instantiate(prefabToSpawn, randomSpawnPosition, Quaternion.identity);
             currentNum++;
         }
     }
+
 }
