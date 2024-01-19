@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Prototype.unity
-    guid: b0e671fb7bf24034dbd930a008cf3adc
+  - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: db821cf15d56fc340b61322d204a353e
   - enabled: 1
     path: Assets/Scenes/Gyroscope.unity
     guid: cdce827ec2d79c1408b83b557add627e
