@@ -717,7 +717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Volume, pitch and guide your orchestra !!
+  m_text: Pick up the wand to start conducting
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a9135561ddc9ea4eabfc9e5bf03891d, type: 2}
   m_sharedMaterial: {fileID: 6648367457922325969, guid: 1a9135561ddc9ea4eabfc9e5bf03891d,
@@ -983,7 +983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.086}
+  m_AnchoredPosition: {x: -2.92, y: 0.086}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &562983650
@@ -4766,7 +4766,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Master secret
+  m_text: Controls
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a9135561ddc9ea4eabfc9e5bf03891d, type: 2}
   m_sharedMaterial: {fileID: 6648367457922325969, guid: 1a9135561ddc9ea4eabfc9e5bf03891d,
@@ -6629,7 +6629,7 @@ PrefabInstance:
       objectReference: {fileID: 1031343148}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: bookPages.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: bookPages.Array.data[0]
@@ -6648,6 +6648,16 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: bookPages.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 95cd706ed3b4f1a489dba2d3e6ebfd2c,
+        type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: bookPages.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 218329ab714cb12438e7462ed4af6d43,
+        type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: bookPages.Array.data[5]
       value: 
       objectReference: {fileID: 21300000, guid: 65dfa31147008814b829935f89b0b9a9,
         type: 3}
