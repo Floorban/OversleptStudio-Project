@@ -34,6 +34,6 @@ public class GyroTest : MonoBehaviour
                            //  $"Gravity\nX={gravity.x:#0} Y={gravity.y:#0} Z={gravity.z:#0}";
 
         //rb.AddForce(angularVelocity.z * -5f, angularVelocity.x * 5f, 0);
-        gameObject.transform.position += new Vector3 (angularVelocity.z * -3f, 0, 0) * Time.deltaTime;
+        //gameObject.transform.position += new Vector3 (angularVelocity.z * -3f, 0, 0) * Time.deltaTime;
     }
 }

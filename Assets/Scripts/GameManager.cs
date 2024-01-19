@@ -58,9 +58,18 @@ public class GameManager : MonoBehaviour
         CheckValue();
         RandomTask();
         CountDownBar();
+        CheckWave();
 
-        vText.text = volumeFactor.ToString();
+        vText.text = gyro.angularVelocity.z.ToString("0.0");
         volumeFactor = gyro.angularVelocity.x;
+
+        if (volumeFactor <= -2f)
+        {
+            audio.volume -= 0.1f;
+        }else if (volumeFactor >= 2f)
+        {
+            audio.volume += 0.1f;
+        }
 
         if (audio.pitch >= 1.2f)
         {
@@ -72,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     
     }
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (!collider1Hit && !collider2Hit)
         {
@@ -84,8 +93,24 @@ public class GameManager : MonoBehaviour
         {
             collider2Hit = true;
         }
-    }
+    }*/
 
+    private void CheckWave()
+    {
+        if (gyro.angularVelocity.z <= -5f && !collider1Hit)
+        {
+            if (!collider2Hit)
+            {
+                collider1Hit = true;
+                startTime = 0f;
+                text.color = Color.white;
+            }
+     
+        }else if (gyro.angularVelocity.z >= 5f && collider1Hit)
+        {
+            collider2Hit = true;
+        }
+    }
     private void RandomTask()
     {
         if (countTimer == duration)
