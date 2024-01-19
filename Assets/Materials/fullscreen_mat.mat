@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_vfx_fullscreen
+  m_Name: fullscreen_mat
   m_Shader: {fileID: -6465566751694194690, guid: fa83b7ba8b4871842babb077b93b3a4b,
     type: 3}
   m_ValidKeywords:
@@ -60,15 +60,15 @@ Material:
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 10
-    - _FullscreenIntensity: 0.38
+    - _FullscreenIntensity: 0.12
     - _QueueControl: 0
     - _QueueOffset: -4
     - _SrcBlend: 5
     - _Surface: 1
-    - _VignetteIntensity: 1
+    - _VignetteIntensity: 0.854
     - _VignetteRadiusPower: 6.28
-    - _VoronoiPower: 1
-    - _VoronoiScale: 1.87
+    - _VoronoiPower: 0.09
+    - _VoronoiScale: 3.3
     - _VoronoiSpeed: 1.4
     - _ZTest: 4
     - _ZWrite: 0
