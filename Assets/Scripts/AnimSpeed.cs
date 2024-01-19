@@ -27,7 +27,7 @@ public class AnimSpeed : MonoBehaviour
         animVolumeControl = audioVolume * factor2;
         mainAnimator.SetFloat("animStyle", animVolumeControl, 100f, 1f);
 
-        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        /*float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         if (scrollInput > 0f)
         {
             audioSource.pitch += 0.03f;
@@ -45,7 +45,7 @@ public class AnimSpeed : MonoBehaviour
         {
             Instantiate(clickEffect, transform.position, Quaternion.identity);
             audioSource.volume -= 0.1f;
-        }
+        }*/
 
     }
 }

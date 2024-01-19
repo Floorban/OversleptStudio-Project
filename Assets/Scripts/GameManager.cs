@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Image countDownBar;
     [SerializeField]
-    private float countTimer;
+    private float countTimer, duration;
+
 
     public mSpawner spawner;
 
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
-        countTimer = 15f;
+        countTimer = duration;
     }
     private void Update()
     {
@@ -60,6 +61,16 @@ public class GameManager : MonoBehaviour
 
         vText.text = volumeFactor.ToString();
         volumeFactor = gyro.angularVelocity.x;
+
+        if (audio.pitch >= 1.2f)
+        {
+            audio.pitch = 1.2f;
+        }else if (audio.pitch <= 0.8f)
+        {
+            audio.pitch = 0.8f;
+        }
+
+    
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -77,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     private void RandomTask()
     {
-        if (countTimer == 15f)
+        if (countTimer == duration)
         {
             /*volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
             pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
@@ -100,8 +111,8 @@ public class GameManager : MonoBehaviour
             audio.pitch += adjustmentp;
 
             /*volumeText.text = $"Volume: {volumeLevel.ToString()}";
-            pitchText.text = $"Pitch: {pitchLevel.ToString()}";
-            moveText.text = $"Movement: {moveLevel.ToString()}";*/
+            pitchText.text = $"Pitch: {pitchLevel.ToString()}";*/
+            moveText.text = $"Movement: {moveLevel.ToString()}";
 
             volumeText.color = Color.white;
             pitchText.color = Color.white;
@@ -110,7 +121,6 @@ public class GameManager : MonoBehaviour
             hitTimes = 0;
             //transform.position = new Vector3(0, 0, 0);
 
-            spawner.Spawn();
         }
     }
     private void CheckValue()
@@ -135,24 +145,24 @@ public class GameManager : MonoBehaviour
     }
     private void CountDownBar()
     {
-        countDownBar.fillAmount = countTimer / 15f;
+        countDownBar.fillAmount = countTimer / duration;
 
         countTimer -= Time.deltaTime;
 
         if (countTimer <= 0f)
         {
-            countTimer = 15f;
+            countTimer = duration;
         }
     }
 
     public void PitchUp()
     {
-        audio.pitch += 0.1f;
+        audio.volume += 0.1f;
     }
 
     public void PitchDown()
     {
-        audio.pitch -= 0.1f;
+        audio.volume -= 0.1f;
     }
 }
 
