@@ -7,7 +7,7 @@ public class Swipe : MonoBehaviour
 {
     [SerializeField] private SwipeListener swipeListener;
     public AudioSource audio;
-
+    public GameManager gameManager;
     private void OnEnable()
     {
         swipeListener.OnSwipe.AddListener(OnSwipe);
@@ -15,11 +15,11 @@ public class Swipe : MonoBehaviour
     }
     private void OnSwipe(string swipe)
     {
-        if (swipe.StartsWith("U"))
+        if (swipe.StartsWith("U") && gameManager.canP)
         {
             audio.pitch += 0.1f;
         }
-        if (swipe.StartsWith("D"))
+        if (swipe.StartsWith("D") && gameManager.canP)
         {
             audio.pitch -= 0.1f;
         }
