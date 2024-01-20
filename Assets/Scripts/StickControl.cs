@@ -10,6 +10,8 @@ public class StickControl : MonoBehaviour
     [SerializeField]
     private GameObject stick2;
     public bool firstStart;
+
+    public GameManager gameManager;
     private void Start()
     {
         stick2.SetActive(false);
@@ -20,7 +22,8 @@ public class StickControl : MonoBehaviour
         {
             if (!firstStart)
             {
-                firstStart = true;        
+                firstStart = true;
+                gameManager.enabled = true;
             }
 
             camera.RotateUp();

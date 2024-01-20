@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-
+using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -33,7 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI vText;
 
-    public bool canV, canP, canG;
+    public bool canV, canP, canG, isV, isP, isG;
     [SerializeField]
     private GameObject tiltUI, pitchUI, swipeUI;
     [SerializeField] private int completedSwitches = 0;
@@ -41,6 +40,8 @@ public class GameManager : MonoBehaviour
     public CameraChange camera;
 
     public StickControl stick;
+
+    public UnityEvent winEvent, failEvent;
     private enum CountdownPeriod
     {
         Volume,
@@ -201,11 +202,13 @@ public class GameManager : MonoBehaviour
             if (canV)
             {
                 Vibration.Vibrate(50);
+                isV = true;
             }
         }
         else
         {
             volumeText.color = Color.red;
+            isV = false;
         }
 
          if (audio.pitch == 1)
@@ -214,11 +217,13 @@ public class GameManager : MonoBehaviour
             if (canP)
             {
                 Vibration.Vibrate(50);
+                isP = true;
             }
         }
         else
         {
             pitchText.color = Color.red;
+            isP = false;
         }
 
          if (hitTimes >= 4)
@@ -227,11 +232,13 @@ public class GameManager : MonoBehaviour
             if (canG)
             {
                 Vibration.Vibrate(50);
+                isG = true;
             }
         }
         else
         {
             moveText.color = Color.red;
+            isG = false;
         }
     }
 
@@ -263,6 +270,17 @@ public class GameManager : MonoBehaviour
 
         if (countTimer <= 0f)
         {
+            if (isV || isP || isG)
+            {
+                winEvent.Invoke();
+            }else if (!isV && !isP && !isG)
+            {
+                failEvent.Invoke();
+            }
+
+            isV = false;
+            isP = false;
+            isG = false;
             Vibration.Cancel(); 
             hitTimes = 0;
             countTimer = duration;
