@@ -2,6 +2,8 @@ using UnityEngine;
 
 public static class Vibration
 {
+    private static float timer = 0f;
+
 #if UNITY_ANDROID && !UNITY_EDITOR
     public static AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
     public static AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
@@ -17,6 +19,13 @@ public static class Vibration
         if (isAndroid())
         {
             vibrator.Call("vibrate", milliseconds);
+
+            timer += Time.deltaTime;
+            if (timer >= 1f)
+            {
+                timer = 0f;
+                Cancel();
+            }
         }else
         {
             Handheld.Vibrate();

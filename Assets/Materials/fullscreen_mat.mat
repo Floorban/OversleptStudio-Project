@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
+  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -23,6 +23,8 @@ Material:
   m_Name: fullscreen_mat
   m_Shader: {fileID: -6465566751694194690, guid: fa83b7ba8b4871842babb077b93b3a4b,
     type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
@@ -34,6 +36,7 @@ Material:
     RenderType: Transparent
   disabledShaderPasses:
   - DepthOnly
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -56,23 +59,24 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _AlphaToMask: 0
     - _Blend: 0
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 10
-    - _FullscreenIntensity: 0.12
+    - _FullscreenIntensity: 0
     - _QueueControl: 0
     - _QueueOffset: -4
     - _SrcBlend: 5
     - _Surface: 1
-    - _VignetteIntensity: 0.854
-    - _VignetteRadiusPower: 6.28
-    - _VoronoiPower: 0.09
-    - _VoronoiScale: 3.3
-    - _VoronoiSpeed: 1.4
+    - _VignetteIntensity: 1
+    - _VignetteRadiusPower: 8
+    - _VoronoiPower: 2
+    - _VoronoiScale: 1
+    - _VoronoiSpeed: 0.5
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 0.052643314, g: 0.8584906, b: 0.06073905, a: 0.20392157}
+    - _Color: {r: 0.11590704, g: 0.6431373, b: 0.01568626, a: 0.20392157}
   m_BuildTextureStacks: []

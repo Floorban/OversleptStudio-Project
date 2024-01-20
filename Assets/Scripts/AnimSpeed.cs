@@ -13,19 +13,29 @@ public class AnimSpeed : MonoBehaviour
     private float factor, factor2;
 
     public GameObject clickEffect;
+
+    public StickControl stick;
     private void Start()
     {
-        mainAnimator = GetComponent<Animator>();
+            mainAnimator = GetComponent<Animator>();
+            mainAnimator.SetFloat("animSpeed", 0.5f);
+            mainAnimator.SetFloat("animStyle", 0.2f);
     }
     void Update()
     {
-        audioSpeed = audioSource.pitch;
-        animSpeedControl = audioSpeed * factor;
-        mainAnimator.SetFloat("animSpeed", animSpeedControl, 100f, 1f);
+        if (stick.firstStart)
+        {
+            mainAnimator.SetBool("animStart", true);
 
-        audioVolume = audioSource.volume;
-        animVolumeControl = audioVolume * factor2;
-        mainAnimator.SetFloat("animStyle", animVolumeControl, 100f, 1f);
+            audioSpeed = audioSource.pitch;
+            animSpeedControl = audioSpeed * factor;
+            mainAnimator.SetFloat("animSpeed", animSpeedControl, 100f, 1f);
+
+            audioVolume = audioSource.volume;
+            animVolumeControl = audioVolume * factor2;
+            mainAnimator.SetFloat("animStyle", animVolumeControl, 100f, 1f);
+        }
+
 
         /*float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         if (scrollInput > 0f)

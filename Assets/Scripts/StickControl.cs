@@ -9,6 +9,7 @@ public class StickControl : MonoBehaviour
     private int stickID;
     [SerializeField]
     private GameObject stick2;
+    public bool firstStart;
     private void Start()
     {
         stick2.SetActive(false);
@@ -17,10 +18,16 @@ public class StickControl : MonoBehaviour
     {
         if (stickID == 0)
         {
+            if (!firstStart)
+            {
+                firstStart = true;        
+            }
+
             camera.RotateUp();
             camera.ZoomOut();
             stick2.SetActive(true);
-        }else
+        }
+        else
         {
             camera.RotateDown();
             camera.ZoomIn();
@@ -28,4 +35,5 @@ public class StickControl : MonoBehaviour
         }
 
     }
+
 }
