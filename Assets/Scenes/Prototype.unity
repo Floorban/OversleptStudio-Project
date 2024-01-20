@@ -530,7 +530,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1199803333}
         m_TargetAssemblyTypeName: mSpawner, Assembly-CSharp
         m_MethodName: Spawn
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -595,7 +595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &421737696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -676,7 +676,7 @@ Transform:
   m_GameObject: {fileID: 421737695}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 1.6}
+  m_LocalPosition: {x: 0, y: -2.69, z: 1.6}
   m_LocalScale: {x: 10, y: 1, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -902,7 +902,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1199803333}
         m_TargetAssemblyTypeName: mSpawner, Assembly-CSharp
         m_MethodName: Spawn
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1480,6 +1480,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rilakkuma robot all applied 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945996918682642998, guid: a9065f7cea7457e4bb6fba492540bf6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2147,13 +2152,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044325164}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.92387956, z: -0.38268343, w: 0}
-  m_LocalPosition: {x: 0, y: 8, z: 10}
+  m_LocalRotation: {x: 0.20883179, y: -0, z: -0, w: 0.9779516}
+  m_LocalPosition: {x: 0, y: 12.3, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 45, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 24.108, y: 0, z: 0}
 --- !u!114 &1044325168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2471,13 +2476,13 @@ MonoBehaviour:
   - {fileID: 1787217602739106928, guid: 243982b8e25c6e648bed9882e7de26f4, type: 3}
   - {fileID: 8915424001988577063, guid: af7896dd98ab7d84f800af9af74ff62e, type: 3}
   - {fileID: 4649626572018606568, guid: 275fd527c7a329a46b330e0c5b37a41b, type: 3}
-  maxNum: 3
+  maxNum: 5
   currentNum: 0
   cNumText: {fileID: 1207719018}
-  minX: 0
-  maxX: 0
-  minZ: 0
-  maxZ: 0
+  minX: -5
+  maxX: 5
+  minZ: -5
+  maxZ: 5
 --- !u!4 &1199803334
 Transform:
   m_ObjectHideFlags: 0
@@ -2487,7 +2492,7 @@ Transform:
   m_GameObject: {fileID: 1199803332}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 4.3, z: 22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3270,7 +3275,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1199803333}
         m_TargetAssemblyTypeName: mSpawner, Assembly-CSharp
         m_MethodName: Spawn
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4528,6 +4533,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: man_Tpose
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227131559734409478, guid: c2341e2d4061fb4459002a422c77654a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6485326754638049396, guid: c2341e2d4061fb4459002a422c77654a,
         type: 3}

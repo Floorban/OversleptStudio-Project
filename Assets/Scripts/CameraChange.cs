@@ -6,7 +6,6 @@ public class CameraChange : MonoBehaviour
 {
     [SerializeField]
     private Camera cam;
-
     void Start()
     {
         cam = GetComponent<Camera>();
@@ -19,12 +18,10 @@ public class CameraChange : MonoBehaviour
     {
         StartCoroutine(LerpFieldOfView(cam.fieldOfView, cam.fieldOfView + 20f, 0.3f));
     }
-
     public void RotateUp()
     {
         StartCoroutine(LerpRotation(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles - new Vector3(35f, 0f, 0f)), 0.2f));
     }
-
     public void RotateDown()
     {
         StartCoroutine(LerpRotation(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(35f, 0f, 0f)), 0.2f));
@@ -43,7 +40,6 @@ public class CameraChange : MonoBehaviour
 
         cam.fieldOfView = endValue;
     }
-
     IEnumerator LerpRotation(Quaternion startRotation, Quaternion endRotation, float duration)
     {
         float elapsedTime = 0f;

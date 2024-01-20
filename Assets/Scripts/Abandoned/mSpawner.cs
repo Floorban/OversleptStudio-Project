@@ -13,12 +13,6 @@ public class mSpawner : MonoBehaviour
 
     [SerializeField]
     private float minX, maxX, minZ, maxZ;
-    private void Start()
-    {
-        Spawn();
-        Spawn();
-        Spawn();
-    }
     private void Update()
     {
         if (currentNum >=maxNum)
@@ -42,7 +36,7 @@ public class mSpawner : MonoBehaviour
             float randomX = Random.Range(minX, maxX);
             float randomZ = Random.Range(minZ, maxZ);
 
-            Vector3 randomSpawnPosition = new Vector3(randomX, -3, randomZ);
+            Vector3 randomSpawnPosition = new Vector3(randomX, transform.position.y, randomZ);
 
             GameObject spawnedMusician = Instantiate(prefabToSpawn, randomSpawnPosition, Quaternion.identity);
             currentNum++;
