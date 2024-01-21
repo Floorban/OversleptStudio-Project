@@ -12,19 +12,19 @@ public class CameraChange : MonoBehaviour
     }
     public void ZoomIn()
     {
-        StartCoroutine(LerpFieldOfView(cam.fieldOfView, cam.fieldOfView - 20f, 0.3f));
+        StartCoroutine(LerpFieldOfView(cam.fieldOfView, cam.fieldOfView - 10f, 0.3f));
     }
     public void ZoomOut()
     {
-        StartCoroutine(LerpFieldOfView(cam.fieldOfView, cam.fieldOfView + 20f, 0.3f));
+        StartCoroutine(LerpFieldOfView(cam.fieldOfView, cam.fieldOfView + 10f, 0.3f));
     }
     public void RotateUp()
     {
-        StartCoroutine(LerpRotation(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles - new Vector3(35f, 0f, 0f)), 0.2f));
+        StartCoroutine(LerpRotation(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles - new Vector3(35f, 0f, 0f)), 0.3f));
     }
     public void RotateDown()
     {
-        StartCoroutine(LerpRotation(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(35f, 0f, 0f)), 0.2f));
+        StartCoroutine(LerpRotation(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(35f, 0f, 0f)), 0.3f));
     }
 
     IEnumerator LerpFieldOfView(float startValue, float endValue, float duration)

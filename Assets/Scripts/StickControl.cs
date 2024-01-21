@@ -29,9 +29,11 @@ public class StickControl : MonoBehaviour
             camera.RotateUp();
             camera.ZoomOut();
             stick2.SetActive(true);
+            stick2.transform.position = new Vector3(0.2f, -1.5f, -5f);
         }
-        else
+        else if (stickID == 1)
         {
+            //stick2.transform.position += new Vector3(gameManager.swingFactor, gameManager.volumeFactor, 0) * Time.deltaTime;
             camera.RotateDown();
             camera.ZoomIn();
             stick2.SetActive(false);

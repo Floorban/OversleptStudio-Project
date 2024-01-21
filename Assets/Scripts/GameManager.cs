@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
     private float countTimer, duration;
 
     public GyroTest gyro;
-    [SerializeField]
-    private float volumeFactor;
+
+    public float volumeFactor, swingFactor;
     [SerializeField]
     private TextMeshProUGUI vText;
 
@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
     public StickControl stick;
 
     public UnityEvent winEvent, failEvent;
+
+    private float timer;
+    public GameObject wand;
     private enum CountdownPeriod
     {
         Volume,
@@ -72,6 +75,16 @@ public class GameManager : MonoBehaviour
             // text.text = startTime.ToString("0.0");
             //vText.text = gyro.angularVelocity.z.ToString("0.0");
             volumeFactor = gyro.angularVelocity.x;
+            swingFactor = -gyro.angularVelocity.x;
+
+            if (swingFactor >= 0.65f)
+            {
+                swingFactor = 0.65f;
+            }
+            else if (swingFactor <= -0.6f)
+            {
+                swingFactor = -0.6f;
+            }
 
             if (canG)
             {
@@ -94,13 +107,19 @@ public class GameManager : MonoBehaviour
             // tilt to change volume
             if (canV)
             {
-                if (volumeFactor <= -2f)
+                timer += Time.deltaTime;
+
+                if (volumeFactor <= -1f && timer >= 0.5f)
                 {
                     audio.volume -= 0.1f;
+                    wand.transform.position += new Vector3(0, -0.5f, 0);
+                    timer = 0f;
                 }
-                else if (volumeFactor >= 2f)
+                else if (volumeFactor >= 1f && timer >= 0.5f)
                 {
                     audio.volume += 0.1f;
+                    wand.transform.position += new Vector3(0,0.5f,0);
+                    timer = 0f;
                 }
             }
 
@@ -260,6 +279,8 @@ public class GameManager : MonoBehaviour
             {
                 collider2Hit = true;
             }
+
+            wand.transform.position = new Vector3(-swingFactor, -1.5f, -5f) * 0.3f;
         }
     }
     private void CountDownBar()
@@ -278,6 +299,7 @@ public class GameManager : MonoBehaviour
                 failEvent.Invoke();
             }
 
+            wand.transform.position = new Vector3(0.2f, -1.5f, -5f);
             isV = false;
             isP = false;
             isG = false;
