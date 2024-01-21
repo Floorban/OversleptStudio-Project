@@ -280,7 +280,7 @@ public class GameManager : MonoBehaviour
                 collider2Hit = true;
             }
 
-            wand.transform.position = new Vector3(-swingFactor, -1.5f, -5f) * 0.3f;
+            wand.transform.position = new Vector3(-swingFactor * Time.deltaTime, -1.5f, -5f);
         }
     }
     private void CountDownBar()
