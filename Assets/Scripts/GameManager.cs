@@ -174,8 +174,8 @@ public class GameManager : MonoBehaviour
         if (canV)
         {
             tiltTimer += Time.deltaTime;
-            audio.volume -= Time.deltaTime * 0.02f;
-            wand.transform.position += new Vector3(0, -audio.volume * 0.02f, 0);
+            audio.volume -= Time.deltaTime * 0.1f;
+            wand.transform.position += new Vector3(0, -audio.volume * 0.05f, 0);
 
             /*if (volumeFactor <= -1f && tiltTimer >= 0.5f)
             {
@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
             if (volumeFactor >= 1f) //&& tiltTimer >= 0.25f
             {
                 audio.volume += 0.1f;
-                wand.transform.position += new Vector3(0, 0.5f, 0);
+                wand.transform.position += new Vector3(0, 0.2f, 0);
                 tiltTimer = 0f;
             }
         }
