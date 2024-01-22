@@ -240,7 +240,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59678213}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d75515892f36e14ab3254a106650cc4, type: 3}
   m_Name: 
@@ -281,40 +281,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59678213}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d82f4a534b997e4f9669c5335dc3e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider1Hit: 0
-  collider2Hit: 0
-  startTime: 0
-  volumeLevel: 0
-  pitchLevel: 0
-  moveLevel: 0
-  volumeText: {fileID: 2053898115}
-  pitchText: {fileID: 1053960718}
-  moveText: {fileID: 1321887269}
   audio: {fileID: 661883913}
-  countDownBar: {fileID: 896719164}
-  countTimer: 0
-  duration: 10
-  gyro: {fileID: 59678218}
-  volumeFactor: 0
-  swingFactor: 0
-  vText: {fileID: 1131798108}
-  canV: 0
-  canP: 0
-  canG: 0
-  isV: 0
-  isP: 0
-  isG: 0
-  tiltUI: {fileID: 1562423123}
-  pitchUI: {fileID: 407975367}
-  swipeUI: {fileID: 673915482}
-  completedSwitches: 0
   camera: {fileID: 0}
-  stick: {fileID: 1713344511}
+  gyro: {fileID: 59678218}
   winEvent:
     m_PersistentCalls:
       m_Calls:
@@ -346,6 +320,30 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   wand: {fileID: 819608870}
+  checkPoint1: 0
+  checkPoint2: 0
+  volumeLevel: 0
+  pitchLevel: 0
+  swingLevel: 0
+  volumeText: {fileID: 2053898115}
+  pitchText: {fileID: 1053960718}
+  swingText: {fileID: 1321887269}
+  countDownBar: {fileID: 896719164}
+  countTimer: 0
+  duration: 10
+  volumeFactor: 0
+  swingFactor: 0
+  canV: 0
+  canP: 0
+  canG: 0
+  isV: 0
+  isP: 0
+  isG: 0
+  completedSwitches: 0
+  tiltUI: {fileID: 1562423123}
+  pitchUI: {fileID: 407975367}
+  swipeUI: {fileID: 673915482}
+  instructionText: {fileID: 1131798108}
 --- !u!1 &195652145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,8 +1899,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1008589, y: 1.6390421, z: 0.1008589}
-  m_Center: {x: -0.0000004775737, y: 0.032951623, z: -0.000000029348227}
+  m_Size: {x: 0.1, y: 0.3, z: 2.2}
+  m_Center: {x: 0, y: -0.6, z: 0.35}
 --- !u!1 &870733115
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,7 +4980,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.10085909, y: 1.6390425, z: 0.10085898}
+  m_Size: {x: 0.2, y: 2, z: 0.2}
   m_Center: {x: 0.0000000036826309, y: 0.03295169, z: 0.000000001480245}
 --- !u!1 &1787157740
 GameObject:
@@ -6573,6 +6571,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 65dfa31147008814b829935f89b0b9a9,
         type: 3}
+    - target: {fileID: 22407488, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 22433904, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_Pivot.y
       value: 0.26120389
@@ -6680,6 +6682,10 @@ PrefabInstance:
     - target: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22447500, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 22488492, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_Pivot.y

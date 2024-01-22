@@ -174,14 +174,17 @@ public class GameManager : MonoBehaviour
         if (canV)
         {
             tiltTimer += Time.deltaTime;
+            audio.volume -= Time.deltaTime * 0.02f;
+            wand.transform.position += new Vector3(0, -audio.volume * 0.02f, 0);
 
-            if (volumeFactor <= -1f && tiltTimer >= 0.5f)
+            /*if (volumeFactor <= -1f && tiltTimer >= 0.5f)
             {
                 audio.volume -= 0.1f;
                 wand.transform.position += new Vector3(0, -0.5f, 0);
                 tiltTimer = 0f;
-            }
-            else if (volumeFactor >= 1f && tiltTimer >= 0.5f)
+            }*/
+
+            if (volumeFactor >= 1f) //&& tiltTimer >= 0.25f
             {
                 audio.volume += 0.1f;
                 wand.transform.position += new Vector3(0, 0.5f, 0);
@@ -224,7 +227,7 @@ public class GameManager : MonoBehaviour
     }
     private void CountDownBar()
     {
-        countDownBar.fillAmount = tiltTimer;
+        countDownBar.fillAmount = tiltTimer / countTimer;
 
         countTimer -= Time.deltaTime;
 
@@ -310,6 +313,11 @@ public class GameManager : MonoBehaviour
         else if (swingFactor <= -0.6f)
         {
             swingFactor = -0.6f;
+        }
+
+        if (volumeFactor <= 0f)
+        {
+            volumeFactor = 0f;
         }
     }
 

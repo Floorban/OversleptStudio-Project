@@ -39,7 +39,7 @@ public class StickControl : MonoBehaviour
             stick2.SetActive(false);
         }
     }
-    private void OnMouseDrag()
+    /*private void OnMouseDrag()
     {
         if (stickID == 0)
         {
@@ -61,6 +61,6 @@ public class StickControl : MonoBehaviour
             camera.ZoomIn();
             stick2.SetActive(false);
         }
-    }
+    }*/
 
 }
