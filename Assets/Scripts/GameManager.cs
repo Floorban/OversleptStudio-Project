@@ -98,11 +98,15 @@ public class GameManager : MonoBehaviour
             pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
             moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;*/
 
-            int v = Random.Range(2, 8);
-            int p = Random.Range(8, 12);
+            int v = Random.Range(2, 5);
+            //int p = Random.Range(8, 10);
+            int[] integers = new int[] {7, 8, 9, 11, 12, 13};
+            int randValue = Random.Range(0, integers.Length);
+            int p = integers[randValue];
             int m = Random.Range(8, 12);
 
             volumeLevel = (float)v / 10;
+            //volumeLevel = 0.2f;
             pitchLevel = (float)p / 10;
             swingLevel = (float)m / 10;
 
@@ -119,7 +123,7 @@ public class GameManager : MonoBehaviour
     }
     private void CheckValue()
     {
-        if (audio.volume >= 0.5f)
+        if (audio.volume >= 0.8f)
         {
             volumeText.color = Color.green;
             if (canV)
@@ -173,23 +177,27 @@ public class GameManager : MonoBehaviour
         // tilt to change volume
         if (canV)
         {
-            tiltTimer += Time.deltaTime;
+            //tiltTimer += Time.deltaTime;
             audio.volume -= Time.deltaTime * 0.1f;
-            wand.transform.position += new Vector3(0, -audio.volume * 0.05f, 0);
-
-            /*if (volumeFactor <= -1f && tiltTimer >= 0.5f)
+            if (!isV)
             {
-                audio.volume -= 0.1f;
-                wand.transform.position += new Vector3(0, -0.5f, 0);
-                tiltTimer = 0f;
-            }*/
+                wand.transform.position += new Vector3(0, -audio.volume * 0.1f, 0);
 
-            if (volumeFactor >= 1f) //&& tiltTimer >= 0.25f
-            {
-                audio.volume += 0.1f;
-                wand.transform.position += new Vector3(0, 0.2f, 0);
-                tiltTimer = 0f;
+                /*if (volumeFactor <= -1f && tiltTimer >= 0.5f)
+                {
+                    audio.volume -= 0.1f;
+                    wand.transform.position += new Vector3(0, -0.5f, 0);
+                    tiltTimer = 0f;
+                }*/
+
+                if (volumeFactor >= 1f) //&& tiltTimer >= 0.25f
+                {
+                    audio.volume += 0.05f;
+                    wand.transform.position += new Vector3(0, 0.3f, 0);
+                    tiltTimer = 0f;
+                }
             }
+
         }
     }
     private void CheckSwing()
@@ -227,7 +235,7 @@ public class GameManager : MonoBehaviour
     }
     private void CountDownBar()
     {
-        countDownBar.fillAmount = tiltTimer / countTimer;
+        countDownBar.fillAmount = countTimer / duration;
 
         countTimer -= Time.deltaTime;
 
