@@ -6,189 +6,109 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private bool collider1Hit, collider2Hit;
-    [SerializeField]
-    private float startTime;
+    private AudioSource audio;
+    public CameraChange camera;
+    public GyroTest gyro;
 
-    //private TextMeshProUGUI text;
+    public UnityEvent winEvent, failEvent;
+    public GameObject wand;
+
+    [SerializeField]
+    private bool checkPoint1, checkPoint2;
+    private float swingTime;
     private int hitTimes = 0;
 
     [SerializeField]
-    private float volumeLevel, pitchLevel, moveLevel;
+    private float volumeLevel, pitchLevel, swingLevel;
     [SerializeField]
-    private TextMeshProUGUI volumeText, pitchText, moveText; 
-
-    [SerializeField]
-    private AudioSource audio;
+    private TextMeshProUGUI volumeText, pitchText, swingText; 
 
     [SerializeField]
     private Image countDownBar;
     [SerializeField]
     private float countTimer, duration;
+    private float tiltTimer;
 
-    public GyroTest gyro;
-
-    public float volumeFactor, swingFactor;
     [SerializeField]
-    private TextMeshProUGUI vText;
-
+    private float volumeFactor, swingFactor;
     public bool canV, canP, canG, isV, isP, isG;
+    [SerializeField] 
+    private int completedSwitches = 0;
     [SerializeField]
     private GameObject tiltUI, pitchUI, swipeUI;
-    [SerializeField] private int completedSwitches = 0;
+    [SerializeField]
+    private TextMeshProUGUI instructionText;
 
-    public CameraChange camera;
-
-    public StickControl stick;
-
-    public UnityEvent winEvent, failEvent;
-
-    private float timer;
-    public GameObject wand;
+    private CountdownPeriod currentPeriod;
     private enum CountdownPeriod
     {
         Volume,
         Pitch,
         Gesture
     }
-    private CountdownPeriod currentPeriod;
     private void Start()
     {
-        if (stick.firstStart)
-        {
-            tiltUI.SetActive(false);
-            pitchUI.SetActive(false);
-            swipeUI.SetActive(false);
-
-            currentPeriod = CountdownPeriod.Volume;
-            audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
-            countTimer = duration;
-            RandomTask();
-        }
-     
+        audio.enabled = true;
+        tiltUI.SetActive(false);
+        pitchUI.SetActive(false);
+        swipeUI.SetActive(false);
+        currentPeriod = CountdownPeriod.Volume;
+        audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
+        countTimer = duration;
+        RandomTask();
     }
     private void Update()
     {
-        if (stick.firstStart)
+        volumeFactor = gyro.angularVelocity.x;
+        swingFactor = -gyro.angularVelocity.x;
+
+        SwitchStage();
+        CheckValue();
+        CountDownBar();
+        UIChange();
+        if (swingTime == 3)
         {
-            audio.enabled = true;
-            // text.text = startTime.ToString("0.0");
-            //vText.text = gyro.angularVelocity.z.ToString("0.0");
-            volumeFactor = gyro.angularVelocity.x;
-            swingFactor = -gyro.angularVelocity.x;
-
-            if (swingFactor >= 0.65f)
-            {
-                swingFactor = 0.65f;
-            }
-            else if (swingFactor <= -0.6f)
-            {
-                swingFactor = -0.6f;
-            }
-
-            if (canG)
-            {
-                if (collider1Hit || collider2Hit)
-                {
-                    startTime += Time.deltaTime;
-                }
-
-                if (collider1Hit && collider2Hit)
-                {
-
-                    //text.color = Color.green;
-                    collider1Hit = false;
-                    collider2Hit = false;
-                    hitTimes++;
-                }
-
-            }
-
-            // tilt to change volume
-            if (canV)
-            {
-                timer += Time.deltaTime;
-
-                if (volumeFactor <= -1f && timer >= 0.5f)
-                {
-                    audio.volume -= 0.1f;
-                    wand.transform.position += new Vector3(0, -0.5f, 0);
-                    timer = 0f;
-                }
-                else if (volumeFactor >= 1f && timer >= 0.5f)
-                {
-                    audio.volume += 0.1f;
-                    wand.transform.position += new Vector3(0,0.5f,0);
-                    timer = 0f;
-                }
-            }
-
-            switch (currentPeriod)
-            {
-                case CountdownPeriod.Volume:
-                    canV = true;
-                    canP = false;
-                    canG = false;
-                    break;
-                case CountdownPeriod.Pitch:
-                    canV = false;
-                    canP = true;
-                    canG = false;
-                    break;
-                case CountdownPeriod.Gesture:
-                    canV = false;
-                    canP = false;
-                    canG = true;
-                    break;
-            }
-
-            if (canV)
-            {
-                vText.text = "Volume!";
-                tiltUI.SetActive(true);
-                pitchUI.SetActive(false);
-                swipeUI.SetActive(false);
-            }
-            else if (canP)
-            {
-                vText.text = "Pitch!";
-                tiltUI.SetActive(false);
-                pitchUI.SetActive(true);
-                swipeUI.SetActive(false);
-            }
-            else if (canG)
-            {
-                vText.text = "Guide them!";
-                tiltUI.SetActive(false);
-                pitchUI.SetActive(false);
-                swipeUI.SetActive(true);
-            }
-
-            CheckValue();
-            if (completedSwitches == 3)
-            {
-                RandomTask();
-            }
-            CountDownBar();
-            CheckGesture();
-            LimitedPitch();
+            RandomTask();
         }
-
-     
+    }
+    private void SwitchStage()
+    {
+        switch (currentPeriod)
+        {
+            case CountdownPeriod.Volume:
+                canV = true;
+                canP = false;
+                canG = false;
+                break;
+            case CountdownPeriod.Pitch:
+                canV = false;
+                canP = true;
+                canG = false;
+                break;
+            case CountdownPeriod.Gesture:
+                canV = false;
+                canP = false;
+                canG = true;
+                break;
+        }
     }
     private void RandomTask()
     {
-        /*volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
-      pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
-      moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;*/
+         /*volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
+            pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
+            moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;*/
 
-             int v = Random.Range(2, 8);
-             int p = Random.Range(8, 12);
+            int v = Random.Range(2, 5);
+            //int p = Random.Range(8, 10);
+            int[] integers = new int[] {7, 8, 9, 11, 12, 13};
+            int randValue = Random.Range(0, integers.Length);
+            int p = integers[randValue];
             int m = Random.Range(8, 12);
 
             volumeLevel = (float)v / 10;
+            //volumeLevel = 0.2f;
             pitchLevel = (float)p / 10;
-            moveLevel = (float)m / 10;
+            swingLevel = (float)m / 10;
 
             float targetVolume = volumeLevel;
             float adjustment = targetVolume - audio.volume;
@@ -198,24 +118,12 @@ public class GameManager : MonoBehaviour
             float adjustmentp = targetPitch - audio.pitch;
             audio.pitch += adjustmentp;
 
-            /*volumeText.text = $"Volume: {volumeLevel.ToString()}";
-            pitchText.text = $"Pitch: {pitchLevel.ToString()}";*/
-            //moveText.text = $"Movement: {moveLevel.ToString()}";
-
-        /*volumeText.color = Color.white;
-        pitchText.color = Color.white;
-        moveText.color = Color.white;*/
-
-        vText.color = Color.red;
-
             hitTimes = 0;
             completedSwitches = 0;
-            //transform.position = new Vector3(0, 0, 0);
-
     }
     private void CheckValue()
     {
-        if (audio.volume >= 0.5f)
+        if (audio.volume >= 0.8f)
         {
             volumeText.color = Color.green;
             if (canV)
@@ -245,9 +153,9 @@ public class GameManager : MonoBehaviour
             isP = false;
         }
 
-         if (hitTimes >= 4)
+         if (hitTimes >= 3)
         {
-            moveText.color = Color.green;
+            swingText.color = Color.green;
             if (canG)
             {
                 Vibration.Vibrate(50);
@@ -256,31 +164,73 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            moveText.color = Color.red;
+            swingText.color = Color.red;
             isG = false;
         }
-    }
 
-    private void CheckGesture()
+        LimitedValue();
+        CheckTilt();
+        CheckSwing();
+    }
+    private void CheckTilt()
+    {
+        // tilt to change volume
+        if (canV)
+        {
+            //tiltTimer += Time.deltaTime;
+            audio.volume -= Time.deltaTime * 0.1f;
+            if (!isV)
+            {
+                wand.transform.position += new Vector3(0, -audio.volume * 0.1f, 0);
+
+                /*if (volumeFactor <= -1f && tiltTimer >= 0.5f)
+                {
+                    audio.volume -= 0.1f;
+                    wand.transform.position += new Vector3(0, -0.5f, 0);
+                    tiltTimer = 0f;
+                }*/
+
+                if (volumeFactor >= 1f) //&& tiltTimer >= 0.25f
+                {
+                    audio.volume += 0.05f;
+                    wand.transform.position += new Vector3(0, 0.3f, 0);
+                    tiltTimer = 0f;
+                }
+            }
+
+        }
+    }
+    private void CheckSwing()
     {
         if (canG)
         {
-            if (gyro.angularVelocity.z <= -3f && !collider1Hit)
+            if (checkPoint1 || checkPoint2)
             {
-                if (!collider2Hit)
+                swingTime += Time.deltaTime;
+            }
+
+            if (checkPoint1 && checkPoint2)
+            {
+                checkPoint1 = false;
+                checkPoint2 = false;
+                hitTimes++;
+            }
+
+            if (gyro.angularVelocity.z <= -3f && !checkPoint1)
+            {
+                if (!checkPoint2)
                 {
-                    collider1Hit = true;
-                    startTime = 0f;
-                    //text.color = Color.white;
+                    checkPoint1 = true;
+                    swingTime = 0f;
                 }
 
             }
-            else if (gyro.angularVelocity.z >= 3f && collider1Hit)
+            else if (gyro.angularVelocity.z >= 3f && checkPoint1)
             {
-                collider2Hit = true;
+                checkPoint2 = true;
             }
 
-            wand.transform.position = new Vector3(-swingFactor * Time.deltaTime, -1.5f, -5f);
+            wand.transform.position = new Vector3(-swingFactor  * 0.8f, -1.5f, -5f);
         }
     }
     private void CountDownBar()
@@ -310,7 +260,7 @@ public class GameManager : MonoBehaviour
 
             volumeText.color = Color.red;
             pitchText.color = Color.red;
-            moveText.color = Color.red;
+            swingText.color = Color.red;
 
             // Switch to the next countdown period
             switch (currentPeriod)
@@ -329,7 +279,31 @@ public class GameManager : MonoBehaviour
 
       
     }
-    private void LimitedPitch()
+    private void UIChange()
+    {
+        if (canV)
+        {
+            instructionText.text = "Volume!";
+            tiltUI.SetActive(true);
+            pitchUI.SetActive(false);
+            swipeUI.SetActive(false);
+        }
+        else if (canP)
+        {
+            instructionText.text = "Pitch!";
+            tiltUI.SetActive(false);
+            pitchUI.SetActive(true);
+            swipeUI.SetActive(false);
+        }
+        else if (canG)
+        {
+            instructionText.text = "Guide them!";
+            tiltUI.SetActive(false);
+            pitchUI.SetActive(false);
+            swipeUI.SetActive(true);
+        }
+    }
+    private void LimitedValue()
     {
         if (audio.pitch >= 1.2f)
         {
@@ -338,6 +312,20 @@ public class GameManager : MonoBehaviour
         else if (audio.pitch <= 0.8f)
         {
             audio.pitch = 0.8f;
+        }
+
+        if (swingFactor >= 0.65f)
+        {
+            swingFactor = 0.65f;
+        }
+        else if (swingFactor <= -0.6f)
+        {
+            swingFactor = -0.6f;
+        }
+
+        if (volumeFactor <= 0f)
+        {
+            volumeFactor = 0f;
         }
     }
 
