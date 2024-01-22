@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
     }
     private void CheckValue()
     {
-        if (audio.volume == 0.5f)
+        if (audio.volume >= 0.5f)
         {
             volumeText.color = Color.green;
             if (canV)
