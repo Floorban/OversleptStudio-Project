@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         CheckValue();
         CountDownBar();
         UIChange();
-        if (swingTime == 3)
+        if (completedSwitches == 3)
         {
             RandomTask();
         }
@@ -94,11 +94,12 @@ public class GameManager : MonoBehaviour
     }
     private void RandomTask()
     {
-         /*volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
-            pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
-            moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;*/
+        /*volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
+           pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
+           moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;*/
+            wand.transform.position = new Vector3(0.2f, 0f, -5f);
 
-            int v = Random.Range(2, 5);
+            int v = Random.Range(1, 3);
             //int p = Random.Range(8, 10);
             int[] integers = new int[] {7, 8, 9, 11, 12, 13};
             int randValue = Random.Range(0, integers.Length);
@@ -110,9 +111,9 @@ public class GameManager : MonoBehaviour
             pitchLevel = (float)p / 10;
             swingLevel = (float)m / 10;
 
-            float targetVolume = volumeLevel;
+            /*float targetVolume = volumeLevel;
             float adjustment = targetVolume - audio.volume;
-            audio.volume += adjustment;
+            audio.volume += adjustment;*/
 
             float targetPitch = pitchLevel;
             float adjustmentp = targetPitch - audio.pitch;
@@ -178,9 +179,9 @@ public class GameManager : MonoBehaviour
         if (canV)
         {
             //tiltTimer += Time.deltaTime;
-            audio.volume -= Time.deltaTime * 0.1f;
             if (!isV)
             {
+                audio.volume -= Time.deltaTime * 0.1f;
                 wand.transform.position += new Vector3(0, -audio.volume * 0.1f, 0);
 
                 /*if (volumeFactor <= -1f && tiltTimer >= 0.5f)
@@ -192,9 +193,9 @@ public class GameManager : MonoBehaviour
 
                 if (volumeFactor >= 1f) //&& tiltTimer >= 0.25f
                 {
-                    audio.volume += 0.05f;
+                    audio.volume += 0.1f;
                     wand.transform.position += new Vector3(0, 0.3f, 0);
-                    tiltTimer = 0f;
+                    //tiltTimer = 0f;
                 }
             }
 
@@ -230,7 +231,7 @@ public class GameManager : MonoBehaviour
                 checkPoint2 = true;
             }
 
-            wand.transform.position = new Vector3(-swingFactor  * 0.8f, -1.5f, -5f);
+            wand.transform.position = new Vector3(swingFactor  * 0.7f, -1.5f, -5f);
         }
     }
     private void CountDownBar()
@@ -276,8 +277,6 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
-
-      
     }
     private void UIChange()
     {
