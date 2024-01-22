@@ -31,8 +31,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float volumeFactor, swingFactor;
-    [SerializeField]
-    private bool canV, canP, canG, isV, isP, isG;
+    public bool canV, canP, canG, isV, isP, isG;
     [SerializeField] 
     private int completedSwitches = 0;
     [SerializeField]
