@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         swingFactor = -gyro.angularVelocity.x;
 
         SwitchStage();
+        RandomPitch();
         CheckValue();
         CountDownBar();
         UIChange();
@@ -92,14 +93,28 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+    private void RandomPitch()
+    {
+        if (canP && !isP)
+        {
+            if (audio.pitch <= 0.9f)
+            {
+                audio.pitch -= Time.deltaTime * 0.05f;
+            }
+            else
+            {
+                audio.pitch += Time.deltaTime * 0.05f;
+            }
+        }
+    }
     private void RandomTask()
     {
         /*volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
            pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
            moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;*/
-            wand.transform.position = new Vector3(0.2f, 0f, -5f);
+            wand.transform.position = new Vector3(0.2f, -1f, -5f);
 
-            int v = Random.Range(1, 3);
+            int v = Random.Range(2, 3);
             //int p = Random.Range(8, 10);
             int[] integers = new int[] {7, 8, 9, 11, 12, 13};
             int randValue = Random.Range(0, integers.Length);
@@ -112,8 +127,10 @@ public class GameManager : MonoBehaviour
             swingLevel = (float)m / 10;
 
             /*float targetVolume = volumeLevel;
-            float adjustment = targetVolume - audio.volume;
-            audio.volume += adjustment;*/
+           float adjustment = targetVolume - audio.volume;
+           audio.volume += adjustment;*/
+
+            audio.volume = volumeLevel;
 
             float targetPitch = pitchLevel;
             float adjustmentp = targetPitch - audio.pitch;
@@ -139,7 +156,7 @@ public class GameManager : MonoBehaviour
             isV = false;
         }
 
-         if (audio.pitch == 1)
+         if (audio.pitch > 0.9f && audio.pitch < 1.1f)
         {
             pitchText.color = Color.green;
             if (canP)
@@ -304,13 +321,13 @@ public class GameManager : MonoBehaviour
     }
     private void LimitedValue()
     {
-        if (audio.pitch >= 1.2f)
+        if (audio.pitch >= 1.5f)
         {
-            audio.pitch = 1.2f;
+            audio.pitch = 1.5f;
         }
-        else if (audio.pitch <= 0.8f)
+        else if (audio.pitch <= 0.5f)
         {
-            audio.pitch = 0.8f;
+            audio.pitch = 0.5f;
         }
 
         if (swingFactor >= 0.65f)
