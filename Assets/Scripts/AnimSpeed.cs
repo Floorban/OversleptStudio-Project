@@ -26,6 +26,9 @@ public class AnimSpeed : MonoBehaviour
             animSpeedControl = audioSource.pitch * factor;
             mainAnimator.SetFloat("animSpeed", animSpeedControl - 1f);
             mainAnimator.SetBool("animStyle", true);
+        }else
+        {
+            mainAnimator.SetBool("animStyle", false);
         }
 
         /*float scrollInput = Input.GetAxis("Mouse ScrollWheel");

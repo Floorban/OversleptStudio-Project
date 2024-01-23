@@ -41,7 +41,7 @@ public class ScoringSystem : MonoBehaviour
     }
     public void Score()
     {
-        currentPoint += addPoint;
+        currentPoint += 100;
         GameObject p1 = Instantiate(_particle, pos1.position, Quaternion.identity);
         GameObject p2 = Instantiate(_particle, pos2.position, Quaternion.identity);
         Destroy(p1, 2f);
@@ -49,6 +49,6 @@ public class ScoringSystem : MonoBehaviour
     }
     public void LosePoint()
     {
-        currentPoint -= addPoint;
+        currentPoint -= 50;
     }
 }
