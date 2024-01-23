@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class ShareButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void ShareScreen()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ScreenCapture.CaptureScreenshot("screenshot.png");
+        //
     }
 }
