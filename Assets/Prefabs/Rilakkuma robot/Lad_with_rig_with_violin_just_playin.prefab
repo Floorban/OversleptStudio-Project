@@ -76,5 +76,58 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f01edb5c396a59d448782fc29f08c98c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4051276120048527935}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f01edb5c396a59d448782fc29f08c98c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4190042644246071509}
   m_SourcePrefab: {fileID: 100100000, guid: f01edb5c396a59d448782fc29f08c98c, type: 3}
+--- !u!1 &8645008539883838768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f01edb5c396a59d448782fc29f08c98c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8878939743207006305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4051276120048527935
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645008539883838768}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 67da824f39ab6b74998d0316032fe017, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4190042644246071509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645008539883838768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5181c7258b505b34eb399462dd1e86c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainAnimator: {fileID: 0}
+  animSpeedControl: 0.5
+  audioSource: {fileID: 0}
+  audioSpeed: 0
+  factor: 0
+  stick: {fileID: 0}

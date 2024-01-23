@@ -1323,7 +1323,12 @@ PrefabInstance:
     - target: {fileID: 6045974024744394934, guid: ce9b37223767e8646aff8665df1e84f4,
         type: 3}
       propertyPath: m_text
-      value: CREDITS
+      value: PICK YOUR SONG
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045974024744394934, guid: ce9b37223767e8646aff8665df1e84f4,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6045974024744394934, guid: ce9b37223767e8646aff8665df1e84f4,
         type: 3}
@@ -1331,6 +1336,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1a9135561ddc9ea4eabfc9e5bf03891d,
         type: 2}
+    - target: {fileID: 6045974024744394934, guid: ce9b37223767e8646aff8665df1e84f4,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 6045974024744394934, guid: ce9b37223767e8646aff8665df1e84f4,
         type: 3}
       propertyPath: m_sharedMaterial
@@ -1350,7 +1360,7 @@ PrefabInstance:
     - target: {fileID: 6970225848336451582, guid: ce9b37223767e8646aff8665df1e84f4,
         type: 3}
       propertyPath: m_Name
-      value: Credits
+      value: Other songs
       objectReference: {fileID: 0}
     - target: {fileID: 8235409266989186054, guid: ce9b37223767e8646aff8665df1e84f4,
         type: 3}

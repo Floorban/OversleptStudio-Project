@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -16,10 +18,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool checkPoint1, checkPoint2;
     private float swingTime;
-    private int hitTimes = 0;
+    public int hitTimes = 0;
 
-    [SerializeField]
-    private float volumeLevel, pitchLevel, swingLevel;
+    public float volumeLevel, pitchLevel, swingLevel;
     [SerializeField]
     private TextMeshProUGUI volumeText, pitchText, swingText; 
 
@@ -38,6 +39,9 @@ public class GameManager : MonoBehaviour
     private GameObject tiltUI, pitchUI, swipeUI;
     [SerializeField]
     private TextMeshProUGUI instructionText;
+
+    public Light light1, light2, light3;
+    public ScoringSystem score;
 
     private CountdownPeriod currentPeriod;
     private enum CountdownPeriod
@@ -109,10 +113,13 @@ public class GameManager : MonoBehaviour
     }
     private void RandomTask()
     {
+           light1.color = Color.red;
+           light2.color = Color.red;
+           light3.color = Color.red;
         /*volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
            pitchLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;
            moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;*/
-            wand.transform.position = new Vector3(0.2f, -1f, -5f);
+           wand.transform.position = new Vector3(0.2f, -1f, -5f);
 
             int v = Random.Range(2, 3);
             //int p = Random.Range(8, 10);
@@ -126,34 +133,28 @@ public class GameManager : MonoBehaviour
             pitchLevel = (float)p / 10;
             swingLevel = (float)m / 10;
 
-            /*float targetVolume = volumeLevel;
-           float adjustment = targetVolume - audio.volume;
-           audio.volume += adjustment;*/
-
             audio.volume = volumeLevel;
-
-            float targetPitch = pitchLevel;
-            float adjustmentp = targetPitch - audio.pitch;
-            audio.pitch += adjustmentp;
-
+            audio.pitch = pitchLevel;
             hitTimes = 0;
             completedSwitches = 0;
     }
     private void CheckValue()
     {
-        if (audio.volume >= 0.8f)
+        if (audio.volume >= 0.7f)
         {
             volumeText.color = Color.green;
             if (canV)
             {
                 Vibration.Vibrate(50);
                 isV = true;
+                light1.color = Color.green;
             }
         }
         else
         {
             volumeText.color = Color.red;
             isV = false;
+            light1.color = Color.red;
         }
 
          if (audio.pitch > 0.9f && audio.pitch < 1.1f)
@@ -163,12 +164,14 @@ public class GameManager : MonoBehaviour
             {
                 Vibration.Vibrate(50);
                 isP = true;
+                light2.color = Color.green;
             }
         }
         else
         {
             pitchText.color = Color.red;
             isP = false;
+            light2.color = Color.red;
         }
 
          if (hitTimes >= 3)
@@ -178,12 +181,14 @@ public class GameManager : MonoBehaviour
             {
                 Vibration.Vibrate(50);
                 isG = true;
+                light3.color = Color.green;
             }
         }
         else
         {
             swingText.color = Color.red;
             isG = false;
+            light3.color = Color.red;
         }
 
         LimitedValue();
@@ -248,17 +253,22 @@ public class GameManager : MonoBehaviour
                 checkPoint2 = true;
             }
 
-            wand.transform.position = new Vector3(swingFactor  * 0.7f, -1.5f, -5f);
+            wand.transform.position = new Vector3(-swingFactor  * 0.7f, -1.5f, -5f);
         }
     }
     private void CountDownBar()
     {
         countDownBar.fillAmount = countTimer / duration;
-
         countTimer -= Time.deltaTime;
 
-        if (countTimer <= 0f)
+        if (score.volume.profile.TryGet(out Bloom bloom))
         {
+            bloom.intensity.value = 1f;
+            bloom.scatter.value = 0.1f;
+        }
+
+        if (countTimer <= 0f)
+        {         
             if (isV || isP || isG)
             {
                 winEvent.Invoke();
@@ -303,6 +313,22 @@ public class GameManager : MonoBehaviour
             tiltUI.SetActive(true);
             pitchUI.SetActive(false);
             swipeUI.SetActive(false);
+            if (audio.volume >= 0.5f)
+            {
+                if (score.volume.profile.TryGet(out Bloom bloom))
+                {
+                    bloom.intensity.value += 3f;
+                    bloom.scatter.value += 0.4f;
+                }
+            }
+            if (audio.volume >= 0.7f)
+            {
+                if (score.volume.profile.TryGet(out Bloom bloom))
+                {
+                    bloom.intensity.value += 3f;
+                    bloom.scatter.value += 0.4f;
+                }
+            }
         }
         else if (canP)
         {
@@ -310,6 +336,25 @@ public class GameManager : MonoBehaviour
             tiltUI.SetActive(false);
             pitchUI.SetActive(true);
             swipeUI.SetActive(false);
+
+            float adjustP = pitchLevel - 1f;
+
+            if (Mathf.Abs(adjustP) < 0.3f )
+            {
+                if (score.volume.profile.TryGet(out Bloom bloom))
+                {
+                    bloom.intensity.value += 3f;
+                    bloom.scatter.value += 0.4f;
+                }
+            }
+            if (Mathf.Abs(adjustP) < 0.15f)
+            {
+                if (score.volume.profile.TryGet(out Bloom bloom))
+                {
+                    bloom.intensity.value += 3f;
+                    bloom.scatter.value += 0.4f;
+                }
+            }
         }
         else if (canG)
         {
@@ -317,6 +362,22 @@ public class GameManager : MonoBehaviour
             tiltUI.SetActive(false);
             pitchUI.SetActive(false);
             swipeUI.SetActive(true);
+            if (hitTimes == 1)
+            {
+                if (score.volume.profile.TryGet(out Bloom bloom))
+                {
+                    bloom.intensity.value += 3f;
+                    bloom.scatter.value += 0.4f;
+                }
+            }
+            if (hitTimes == 2)
+            {
+                if (score.volume.profile.TryGet(out Bloom bloom))
+                {
+                    bloom.intensity.value += 3f;
+                    bloom.scatter.value += 0.4f;
+                }
+            }
         }
     }
     private void LimitedValue()
@@ -342,6 +403,11 @@ public class GameManager : MonoBehaviour
         if (volumeFactor <= 0f)
         {
             volumeFactor = 0f;
+        }
+
+        if (audio.volume <= 0.1f)
+        {
+            audio.volume = 0.1f;
         }
     }
 

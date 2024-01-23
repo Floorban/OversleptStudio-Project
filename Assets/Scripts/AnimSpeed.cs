@@ -3,23 +3,19 @@ using UnityEngine;
 public class AnimSpeed : MonoBehaviour
 {
     [SerializeField] Animator mainAnimator;
-    [SerializeField, Range(0f, 1.5f)] float animSpeedControl = 0.5f;
-    [SerializeField, Range(0f, 1.5f)] float animVolumeControl = 0.5f;
-
+    [SerializeField]
+    private float animSpeedControl, factor;
     public AudioSource audioSource;
-    [SerializeField]
-    private float audioSpeed, audioVolume;
-    [SerializeField]
-    private float factor, factor2;
-
-    public GameObject clickEffect;
 
     public StickControl stick;
     private void Start()
     {
             mainAnimator = GetComponent<Animator>();
             mainAnimator.SetFloat("animSpeed", 0.5f);
-            mainAnimator.SetFloat("animStyle", 0.2f);
+            mainAnimator.SetBool("animStyle", false);
+            audioSource = FindObjectOfType<AudioSource>();
+            stick = GameObject.FindWithTag("Player").GetComponent<StickControl>();
+            factor = 2.5f;
     }
     void Update()
     {
@@ -27,15 +23,10 @@ public class AnimSpeed : MonoBehaviour
         {
             mainAnimator.SetBool("animStart", true);
 
-            audioSpeed = audioSource.pitch;
-            animSpeedControl = audioSpeed * factor;
-            mainAnimator.SetFloat("animSpeed", animSpeedControl, 100f, 1f);
-
-            audioVolume = audioSource.volume;
-            animVolumeControl = audioVolume * factor2;
-            mainAnimator.SetFloat("animStyle", animVolumeControl, 100f, 1f);
+            animSpeedControl = audioSource.pitch * factor;
+            mainAnimator.SetFloat("animSpeed", animSpeedControl - 1f);
+            mainAnimator.SetBool("animStyle", true);
         }
-
 
         /*float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         if (scrollInput > 0f)

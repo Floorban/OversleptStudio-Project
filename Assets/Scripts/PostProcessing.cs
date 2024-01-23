@@ -10,7 +10,7 @@ public class PostProcessing : MonoBehaviour
     private Volume volume;
     public void WinEffect()
     {
-       if (volume.profile.TryGet(out Vignette vignette))
+        if (volume.profile.TryGet(out Vignette vignette))
         {
             if (vignette.intensity.value <= 1f && vignette.intensity.value >= 0f)
             {
