@@ -23,10 +23,6 @@ public class ChangeClip : MonoBehaviour
 
         if (!audio) audio = GetComponent<AudioSource>();
     }
-    private void Start()
-    {
-        audio.enabled = true;
-    }
     public void PlayClip(AudioClip clip)
     {
         audio.clip = clip;

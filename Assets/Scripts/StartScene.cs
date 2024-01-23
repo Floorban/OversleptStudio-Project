@@ -21,6 +21,7 @@ public class StartScene : MonoBehaviour
     private float scoreLerpDuration;
     [SerializeField]
     private GameObject scoreStick;
+    [SerializeField]
     private ScoringSystem score;
     [SerializeField]
     private GameManager gameManager;
@@ -35,7 +36,6 @@ public class StartScene : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetTrigger("Open");
         audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
-        stick = scoreStick.GetComponent<StickControl>();
     }
     private void Update()
     {
@@ -53,11 +53,12 @@ public class StartScene : MonoBehaviour
     }
     private void EndGame()
     {
-        audio.Stop();
+        audio.enabled = false;
         stick.firstStart = false;
         volume.SetActive(false);
         cam.RotateDown();
         cam.ZoomIn();
+        
         score.End(transforms);
         guideBook.SetActive(false);
         endBook.SetActive(true);

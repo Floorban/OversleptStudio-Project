@@ -3915,7 +3915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   timer: 0
-  endTIme: 10
+  endTIme: 120
   audio: {fileID: 0}
   cam: {fileID: 2013877781}
   guideBook: {fileID: 2097754763}
@@ -3923,6 +3923,7 @@ MonoBehaviour:
   text: {fileID: 1434460920}
   scoreLerpDuration: 4
   scoreStick: {fileID: 819608870}
+  score: {fileID: 819608880}
   gameManager: {fileID: 59678220}
   stick: {fileID: 1713344511}
   volume: {fileID: 2116061986}
