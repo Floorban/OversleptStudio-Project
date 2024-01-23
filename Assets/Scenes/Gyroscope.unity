@@ -2838,7 +2838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &562983649
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3734,7 +3734,7 @@ PrefabInstance:
     - target: {fileID: 550597830122144975, guid: 825e720f03dcb354cb1bd832aad589ad,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2599030120664923298, guid: 825e720f03dcb354cb1bd832aad589ad,
         type: 3}
@@ -3846,6 +3846,7 @@ MonoBehaviour:
   gameManager: {fileID: 59678220}
   stick: {fileID: 1713344511}
   volume: {fileID: 2116061986}
+  transforms: []
 --- !u!4 &760240320 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2723306fe845cdf46af82a3cd5c0e011,
@@ -11707,7 +11708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 180032, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11403584, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_Sprite

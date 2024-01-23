@@ -47,6 +47,13 @@ public class ScoringSystem : MonoBehaviour
         Destroy(p1, 2f);
         Destroy(p2, 2f);
     }
+    public void End(Transform[] trans)
+    {
+        GameObject p1 = Instantiate(_particle, trans[0].position, Quaternion.identity);
+        GameObject p2 = Instantiate(_particle, trans[1].position, Quaternion.identity);
+        GameObject p3 = Instantiate(_particle, trans[2].position, Quaternion.identity);
+        GameObject p4 = Instantiate(_particle, trans[3].position, Quaternion.identity);
+    }
     public void LosePoint()
     {
         currentPoint -= 50;

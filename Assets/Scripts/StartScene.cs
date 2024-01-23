@@ -27,6 +27,8 @@ public class StartScene : MonoBehaviour
     private StickControl stick;
     [SerializeField]
     private GameObject volume;
+    [SerializeField]
+    private Transform[] transforms;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -43,7 +45,10 @@ public class StartScene : MonoBehaviour
             timer = -1000000f;
         }
     }
+    public void ShareScore()
+    {
 
+    }
     private void EndGame()
     {
         audio.Stop();
@@ -51,6 +56,7 @@ public class StartScene : MonoBehaviour
         volume.SetActive(false);
         cam.RotateDown();
         cam.ZoomIn();
+        score.End(transforms);
         guideBook.SetActive(false);
         endBook.SetActive(true);
         gameManager.enabled = false;
