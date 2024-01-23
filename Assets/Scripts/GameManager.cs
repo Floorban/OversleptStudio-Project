@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Image countDownBar;
     [SerializeField]
+    private GameObject barObj;
+    [SerializeField]
     private float countTimer, duration;
     private float tiltTimer;
 
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
         tiltUI.SetActive(false);
         pitchUI.SetActive(false);
         swipeUI.SetActive(false);
+        barObj.SetActive(true);
         currentPeriod = CountdownPeriod.Volume;
         audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
         countTimer = duration;

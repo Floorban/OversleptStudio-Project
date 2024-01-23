@@ -11,9 +11,11 @@ public class LoadbarController : MonoBehaviour
     public float timeRemaining;
     public float max_time = 10f;
     public TextMeshProUGUI text;
+    public Animator anim;
 
     void Start()
     {
+        anim.SetTrigger("Close");
         timeRemaining = 0f;
     }
 
