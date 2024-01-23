@@ -28,7 +28,7 @@ public class StartScene : MonoBehaviour
     [SerializeField]
     private StickControl stick;
     [SerializeField]
-    private GameObject volume;
+    private GameObject volume, canvas;
     [SerializeField]
     private Transform[] transforms;
     void Start()
@@ -56,6 +56,7 @@ public class StartScene : MonoBehaviour
         audio.enabled = false;
         stick.firstStart = false;
         volume.SetActive(false);
+        canvas.SetActive(false);
         cam.RotateDown();
         cam.ZoomIn();
         

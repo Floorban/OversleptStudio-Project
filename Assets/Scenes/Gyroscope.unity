@@ -3927,6 +3927,7 @@ MonoBehaviour:
   gameManager: {fileID: 59678220}
   stick: {fileID: 1713344511}
   volume: {fileID: 2116061986}
+  canvas: {fileID: 1929502615}
   transforms:
   - {fileID: 22023866}
   - {fileID: 1791880030}

@@ -212,7 +212,7 @@ public class GameManager : MonoBehaviour
             if (!isV)
             {
                 audio.volume -= Time.deltaTime * 0.15f;
-                wand.transform.position += new Vector3(0, -audio.volume * 0.12f, 0);
+                wand.transform.position += new Vector3(0, -audio.volume * 0.13f, 0);
 
                 /*if (volumeFactor <= -1f && tiltTimer >= 0.5f)
                 {
@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour
                 if (volumeFactor >= 1f) //&& tiltTimer >= 0.25f
                 {
                     audio.volume += 0.07f;
-                    wand.transform.position += new Vector3(0, 0.27f, 0);
+                    wand.transform.position += new Vector3(0, 0.25f, 0);
                     //tiltTimer = 0f;
                 }
             }
@@ -245,6 +245,7 @@ public class GameManager : MonoBehaviour
                 checkPoint1 = false;
                 checkPoint2 = false;
                 hitTimes++;
+                winEvent.Invoke();
             }
 
             if (gyro.angularVelocity.z <= -3f && !checkPoint1)

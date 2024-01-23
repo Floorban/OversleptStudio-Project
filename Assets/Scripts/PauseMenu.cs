@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
     {
         audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
         audio.enabled = true;
-        audio.volume = 0.8f;
+        audio.volume = 0.7f;
         audio.pitch = 1f;
             audio.Play();
     
