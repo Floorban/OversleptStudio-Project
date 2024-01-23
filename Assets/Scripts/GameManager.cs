@@ -113,7 +113,12 @@ public class GameManager : MonoBehaviour
     }
     private void RandomTask()
     {
-           light1.color = Color.red;
+        if (score.volume.profile.TryGet(out Bloom bloom))
+        {
+            bloom.intensity.value = 1f;
+            bloom.scatter.value = 0.1f;
+        }
+        light1.color = Color.red;
            light2.color = Color.red;
            light3.color = Color.red;
         /*volumeLevel = Mathf.Round(Random.Range(0.2f, 0.8f) * 10.0f) / 10.0f;
@@ -123,7 +128,7 @@ public class GameManager : MonoBehaviour
 
             int v = Random.Range(2, 3);
             //int p = Random.Range(8, 10);
-            int[] integers = new int[] {7, 8, 9, 11, 12, 13};
+            int[] integers = new int[] {7, 8, 12, 13};
             int randValue = Random.Range(0, integers.Length);
             int p = integers[randValue];
             int m = Random.Range(8, 12);
@@ -268,7 +273,13 @@ public class GameManager : MonoBehaviour
         }
 
         if (countTimer <= 0f)
-        {         
+        {
+            if (score.volume.profile.TryGet(out Bloom bloom2))
+            {
+                bloom2.intensity.value = 1f;
+                bloom2.scatter.value = 0.1f;
+            }
+
             if (isV || isP || isG)
             {
                 winEvent.Invoke();
@@ -317,7 +328,7 @@ public class GameManager : MonoBehaviour
             {
                 if (score.volume.profile.TryGet(out Bloom bloom))
                 {
-                    bloom.intensity.value += 3f;
+                    bloom.intensity.value += 4f;
                     bloom.scatter.value += 0.4f;
                 }
             }
@@ -325,7 +336,7 @@ public class GameManager : MonoBehaviour
             {
                 if (score.volume.profile.TryGet(out Bloom bloom))
                 {
-                    bloom.intensity.value += 3f;
+                    bloom.intensity.value += 4f;
                     bloom.scatter.value += 0.4f;
                 }
             }
@@ -337,21 +348,21 @@ public class GameManager : MonoBehaviour
             pitchUI.SetActive(true);
             swipeUI.SetActive(false);
 
-            float adjustP = pitchLevel - 1f;
+            float adjustP = audio.pitch - 1f;
 
-            if (Mathf.Abs(adjustP) < 0.3f )
+            if (Mathf.Abs(adjustP) <= 0.3f )
             {
                 if (score.volume.profile.TryGet(out Bloom bloom))
                 {
-                    bloom.intensity.value += 3f;
+                    bloom.intensity.value += 4f;
                     bloom.scatter.value += 0.4f;
                 }
             }
-            if (Mathf.Abs(adjustP) < 0.15f)
+            if (Mathf.Abs(adjustP) <= 0.1f)
             {
                 if (score.volume.profile.TryGet(out Bloom bloom))
                 {
-                    bloom.intensity.value += 3f;
+                    bloom.intensity.value += 4f;
                     bloom.scatter.value += 0.4f;
                 }
             }
@@ -362,19 +373,19 @@ public class GameManager : MonoBehaviour
             tiltUI.SetActive(false);
             pitchUI.SetActive(false);
             swipeUI.SetActive(true);
-            if (hitTimes == 1)
+            if (hitTimes >= 1)
             {
                 if (score.volume.profile.TryGet(out Bloom bloom))
                 {
-                    bloom.intensity.value += 3f;
+                    bloom.intensity.value += 4f;
                     bloom.scatter.value += 0.4f;
                 }
             }
-            if (hitTimes == 2)
+            if (hitTimes >= 2)
             {
                 if (score.volume.profile.TryGet(out Bloom bloom))
                 {
-                    bloom.intensity.value += 3f;
+                    bloom.intensity.value += 4f;
                     bloom.scatter.value += 0.4f;
                 }
             }
