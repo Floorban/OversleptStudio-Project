@@ -20,6 +20,7 @@ public class StartScene : MonoBehaviour
     [SerializeField]
     private float scoreLerpDuration;
     [SerializeField]
+    private GameObject scoreStick;
     private ScoringSystem score;
     [SerializeField]
     private GameManager gameManager;
@@ -34,6 +35,7 @@ public class StartScene : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetTrigger("Open");
         audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
+        stick = scoreStick.GetComponent<StickControl>();
     }
     private void Update()
     {
@@ -62,6 +64,7 @@ public class StartScene : MonoBehaviour
         gameManager.enabled = false;
         //text.text = $"Score: { score.currentPoint }";
         StartCoroutine(LerpScoreText(score.currentPoint));
+        scoreStick.SetActive(false);
     }
     private IEnumerator LerpScoreText(float targetScore)
     {

@@ -17,11 +17,11 @@ public class Swipe : MonoBehaviour
     {
         if (swipe.StartsWith("U") && gameManager.canP)
         {
-            audio.pitch += 0.1f;
+            audio.pitch += 0.05f;
         }
         if (swipe.StartsWith("D") && gameManager.canP)
         {
-            audio.pitch -= 0.1f;
+            audio.pitch -= 0.05f;
         }
     }
     private void OnDisable()

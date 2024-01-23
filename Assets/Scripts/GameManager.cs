@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
            moveLevel = Mathf.Round(Random.Range(0.8f, 1.2f) * 10.0f) / 10.0f;*/
            wand.transform.position = new Vector3(0.2f, -1f, -5f);
 
-            int v = Random.Range(2, 3);
+            int v = Random.Range(2, 5);
             //int p = Random.Range(8, 10);
             int[] integers = new int[] {7, 8, 12, 13};
             int randValue = Random.Range(0, integers.Length);
@@ -211,8 +211,8 @@ public class GameManager : MonoBehaviour
             //tiltTimer += Time.deltaTime;
             if (!isV)
             {
-                audio.volume -= Time.deltaTime * 0.1f;
-                wand.transform.position += new Vector3(0, -audio.volume * 0.1f, 0);
+                audio.volume -= Time.deltaTime * 0.15f;
+                wand.transform.position += new Vector3(0, -audio.volume * 0.12f, 0);
 
                 /*if (volumeFactor <= -1f && tiltTimer >= 0.5f)
                 {
@@ -223,8 +223,8 @@ public class GameManager : MonoBehaviour
 
                 if (volumeFactor >= 1f) //&& tiltTimer >= 0.25f
                 {
-                    audio.volume += 0.1f;
-                    wand.transform.position += new Vector3(0, 0.3f, 0);
+                    audio.volume += 0.07f;
+                    wand.transform.position += new Vector3(0, 0.27f, 0);
                     //tiltTimer = 0f;
                 }
             }
@@ -327,7 +327,7 @@ public class GameManager : MonoBehaviour
             tiltUI.SetActive(true);
             pitchUI.SetActive(false);
             swipeUI.SetActive(false);
-            if (audio.volume >= 0.5f)
+            if (audio.volume > 0.5f)
             {
                 if (score.volume.profile.TryGet(out Bloom bloom))
                 {
