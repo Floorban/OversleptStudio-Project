@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d82f4a534b997e4f9669c5335dc3e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 661883913}
+  audio: {fileID: 0}
   camera: {fileID: 0}
   gyro: {fileID: 59678218}
   winEvent:
@@ -3197,11 +3197,11 @@ GameObject:
   - component: {fileID: 661883913}
   m_Layer: 0
   m_Name: Audio Source
-  m_TagString: GameController
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &661883913
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3689,7 +3689,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   timer: 0
   endTIme: 50
-  audio: {fileID: 661883913}
+  audio: {fileID: 0}
   cam: {fileID: 2013877781}
   guideBook: {fileID: 2097754763}
   endBook: {fileID: 562983648}

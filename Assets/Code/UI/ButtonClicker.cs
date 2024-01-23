@@ -9,9 +9,11 @@ public class ButtonClicker : MonoBehaviour
     private NoteType noteType;
 
     private bool Clicked = false;
-
+    [SerializeField]
+    private AudioSource audio;
     private void Start()
     {
+        audio = GameObject.FindWithTag("GameController").GetComponent<AudioSource>();
         switch (noteType)
         {
             case NoteType.Note_1:
@@ -71,6 +73,7 @@ public class ButtonClicker : MonoBehaviour
                 SetParams(false);
 
                 print("Change scene now!");
+                audio.enabled = false;
                 SceneManager.LoadScene(1);
                 // Change Scene here
             }

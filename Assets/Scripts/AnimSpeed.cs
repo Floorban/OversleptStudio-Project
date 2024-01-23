@@ -13,8 +13,8 @@ public class AnimSpeed : MonoBehaviour
             mainAnimator = GetComponent<Animator>();
             mainAnimator.SetFloat("animSpeed", 0.5f);
             mainAnimator.SetBool("animStyle", false);
-            audioSource = FindObjectOfType<AudioSource>();
-            stick = GameObject.FindWithTag("Player").GetComponent<StickControl>();
+            audioSource = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
+        stick = GameObject.FindWithTag("Player").GetComponent<StickControl>();
             factor = 2.5f;
     }
     void Update()

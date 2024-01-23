@@ -31,6 +31,7 @@ public class StartScene : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         anim.SetTrigger("Open");
+        audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
     }
     private void Update()
     {

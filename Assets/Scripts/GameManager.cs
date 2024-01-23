@@ -54,13 +54,13 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        audio.enabled = true;
         tiltUI.SetActive(false);
         pitchUI.SetActive(false);
         swipeUI.SetActive(false);
         barObj.SetActive(true);
         currentPeriod = CountdownPeriod.Volume;
         audio = GameObject.FindGameObjectWithTag("GameController").GetComponent<AudioSource>();
+        audio.enabled = true;
         countTimer = duration;
         RandomTask();
     }
