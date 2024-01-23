@@ -71,9 +71,9 @@ Material:
     - _Ambient_Strength: 0.25
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
-    - _Falloff_Amount: 0
+    - _Falloff_Amount: 0.55
     - _Fresnel_Size: 0.618
-    - _Lighting_Cutoff: -14.2
+    - _Lighting_Cutoff: -2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 225
