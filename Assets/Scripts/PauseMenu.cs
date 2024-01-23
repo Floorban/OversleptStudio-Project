@@ -6,30 +6,32 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public bool isPaused;
+    public GameObject resumeButton;
+    public GameObject pauseButton;
+    
     void Start()
     {
         pauseMenu.SetActive(false);
+        resumeButton.SetActive(false);
+        pauseButton.SetActive(true);
     }
     public void Pause() 
     {
-        if (isPaused == false)
-        {
-            isPaused = true;
             pauseMenu.SetActive(true);
+            pauseButton.SetActive(false);
+            resumeButton.SetActive(true);
             Time.timeScale = 0f;
-        }
-        
+       
     }
 
     public void Resume()
     {
-        if (isPaused == true)
-        {
-            isPaused = false;   
+       
             pauseMenu.SetActive(false);
+            pauseButton.SetActive(true);
+            resumeButton.SetActive(false);
             Time.timeScale = 1f;
-        }
+           
     }
 
 
