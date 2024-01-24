@@ -242,10 +242,15 @@ public class GameManager : MonoBehaviour
 
             if (checkPoint1 && checkPoint2)
             {
+                if (score.volume.profile.TryGet(out Bloom bloom))
+                {
+                    bloom.intensity.value += 3f;
+                    bloom.scatter.value += 0.3f;
+                }
+                winEvent.Invoke();
                 checkPoint1 = false;
                 checkPoint2 = false;
-                hitTimes++;
-                winEvent.Invoke();
+                hitTimes++;               
             }
 
             if (gyro.angularVelocity.z <= -3f && !checkPoint1)
@@ -332,16 +337,16 @@ public class GameManager : MonoBehaviour
             {
                 if (score.volume.profile.TryGet(out Bloom bloom))
                 {
-                    bloom.intensity.value += 4f;
-                    bloom.scatter.value += 0.4f;
+                    bloom.intensity.value += 5f;
+                    bloom.scatter.value += 0.5f;
                 }
             }
             if (audio.volume >= 0.7f)
             {
                 if (score.volume.profile.TryGet(out Bloom bloom))
                 {
-                    bloom.intensity.value += 4f;
-                    bloom.scatter.value += 0.4f;
+                    bloom.intensity.value += 5f;
+                    bloom.scatter.value += 0.5f;
                 }
             }
         }
@@ -377,7 +382,7 @@ public class GameManager : MonoBehaviour
             tiltUI.SetActive(false);
             pitchUI.SetActive(false);
             swipeUI.SetActive(true);
-            if (hitTimes >= 1)
+            /*if (hitTimes >= 1)
             {
                 if (score.volume.profile.TryGet(out Bloom bloom))
                 {
@@ -392,7 +397,7 @@ public class GameManager : MonoBehaviour
                     bloom.intensity.value += 4f;
                     bloom.scatter.value += 0.4f;
                 }
-            }
+            }*/
         }
     }
     private void LimitedValue()
